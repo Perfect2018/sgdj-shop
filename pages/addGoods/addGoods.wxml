@@ -1,0 +1,239 @@
+<!--pages/addGoods/addGoods.wxml-->
+<wxs src="../../wxs/util.wxs" module="util"></wxs>
+<view class="page">
+	<view class='item'>
+		<view class="item-title item-tit">名称</view>
+		<input class="item-input" value="{{form.goods_name}}" bindblur='_goods_name_blur' bindinput='_setParams' data-key="form.goods_name" placeholder='请输入名称' />
+	</view>
+
+	<view class='item'>
+		<view class="item-title item-tit">分类</view>
+		<picker class="item-input" mode="selector" bindchange="_goods_classificationChange" value="{{goods_classificationIndex}}" range="{{goods_classificationArray}}">
+			<view class="picker">{{form.goods_classification?goods_classificationValue:'请选择分类'}}</view>
+		</picker>
+	</view>
+
+	<view class='item'>
+		<view class="item-title item-tit">规格</view>
+		<input class="item-input" value="{{form.goods_spec}}" bindinput='_setParams' data-key="form.goods_spec" placeholder="0"></input>
+
+		<view class="item-title item-tit">单位</view>
+		<picker class="item-input" mode="selector" bindchange="_goods_specificationsChange" value="{{goods_specificationsIndex}}" range="{{goods_specificationsArray}}">
+			<view class="picker">{{form.goods_specifications?form.goods_specifications:'请选择规格单位'}}</view>
+		</picker>
+	</view>
+
+	<view class='item'>
+		<view class="item-title item-tit">市场价</view>
+		<input class="item-input" value="{{form.goods_marketPrice}}" bindinput='_setParams' data-key="form.goods_marketPrice" placeholder="单位：( 元 )" />
+	</view>
+
+	<view class='item'>
+		<view class="item-title item-tit">平台价</view>
+		<input class="item-input" value="{{form.goods_platformPrice}}" bindinput='_setParams' data-key="form.goods_platformPrice" placeholder="单位：( 元 )" />
+	</view>
+	<!-- <view class='item'>
+    <view class="item-title">佣金</view>
+    <picker class="item-input" mode="selector" bindchange="_goods_commissionChange" value="{{goods_commissionIndex}}" range="{{goods_commissionArray}}">
+      <view class="picker">
+         {{form.goods_commission?form.goods_commission:'请选择佣金'}}
+      </view>
+    </picker>
+  </view> -->
+	<view class='item'>
+		<view class="item-title item-tit">库存</view>
+		<input class="item-input" value="{{form.goods_inventory}}" type="number" bindinput='_setParams' data-key="form.goods_inventory" placeholder="请输入库存数量" />
+	</view>
+	<view class='item'>
+		<view class="item-title item-tit">产地</view>
+		<input class="item-input" value="{{form.goods_origin}}" bindinput='_setParams' data-key="form.goods_origin" placeholder="请输入产地" />
+	</view>
+	<block wx:if="{{goodsType=='false'}}">
+		<view class='item' wx:if="{{form.goods_fight!='01'}}">
+			<view class="item-title">分销商品</view>
+			<radio-group class="item-input" bindchange='_setParams' data-key="form.goods_distribution">
+				<label>
+					<radio value="01" color="#fdad00" checked="{{form.goods_distribution=='01'}}" />是
+				</label>
+				<label>
+					<radio value="" color="#fdad00" checked="{{form.goods_distribution!='01'}}" />否
+				</label>
+			</radio-group>
+		</view>
+		<view wx:if="{{form.goods_distribution=='01'}}" class='item'>
+			<view class="item-title">商品文案</view>
+			<textarea class="item-input-describe" value="{{form.goods_note}}" type="text" maxlength="200" bindinput='_goods_note' data-key="form.goods_note" placeholder="最多输入8行,每行最多18字" bindblur='_goods_note_blur' />
+			</view>
+    <view class='item'>
+      <view class="item-title">到店体验商品</view>
+      <radio-group class="item-input" bindchange='_setParams' data-key="form.goods_isSeason">
+        <label>
+          <radio value="01" color="#fdad00" checked="{{form.goods_isSeason=='01'}}" />是
+        </label>
+        <label>
+          <radio value="" color="#fdad00" checked="{{form.goods_isSeason!='01'}}" />否
+        </label>
+      </radio-group>
+    </view>
+    <view class='item' wx:if="{{form.goods_distribution!='01'}}">
+      <view class="item-title">拼单商品</view>
+      <radio-group class="item-input" bindchange='_setParams' data-key="form.goods_fight">
+        <label>
+          <radio value="01" color="#fdad00" checked="{{form.goods_fight=='01'}}" />是
+        </label>
+        <label>
+          <radio value="" color="#fdad00" checked="{{form.goods_fight!='01'}}" />否
+        </label>
+      </radio-group>
+    </view>
+    <view class='item' wx:if="{{form.goods_fight=='01'}}" >
+      <view class="item-title item-tit">拼单价</view>
+      <input class="item-input" value="{{form.goods_fightPrice}}" bindinput='_setParams' data-key="form.goods_fightPrice" placeholder="单位：( 元 )" />
+    </view>
+  </block>
+  <view class='item'>
+    <view class="item-title">预包装食品</view>
+    <radio-group class="item-input" bindchange='_setParams' data-key="form.goods_prepackaged">
+      <label>
+        <radio value="01" color="#fdad00" checked="{{form.goods_prepackaged=='01'}}" />是
+      </label>
+      <label>
+        <radio value="02" color="#fdad00" checked="{{form.goods_prepackaged=='02'}}" />否
+      </label>
+    </radio-group>
+  </view>
+
+   <view class='item' wx:if="{{form.goods_prepackaged=='01'}}">
+    <view class="item-title item-tit">许可证编号</view>
+    <input class="item-input" value="{{form.goods_licenseNumber}}" bindinput='_setParams' data-key="form.goods_licenseNumber" placeholder="食品生产/流通许可证编号" />
+  </view>
+  <block wx:if="{{form.goods_prepackaged=='01'}}">
+    <view class='item'>
+      <view class=" item-title">生产日期</view>
+      <picker class="item-input" mode="date" value="{{form.goods_production}}" bindchange='_setParams' data-key="form.goods_production">
+        <view class="picker">{{form.goods_production?form.goods_production:'请选择生产日期'}}</view>
+      </picker>
+    </view>
+    <view class='item'>
+      <view class="item-title">保质期</view>
+      <picker class="item-input" mode="date" value="{{form.goods_shelfLife}}" bindchange='_setParams' data-key="form.goods_shelfLife">
+        <view class="picker">{{form.goods_shelfLife?form.goods_shelfLife:'请选择保质期'}}</view>
+      </picker>
+    </view>
+  </block>
+  <block wx:if="{{goodsType=='false' && form.goods_isSeason!='01'}}">
+    <view class='item'>
+      <view class="item-title item-tit">运费</view>
+      <input class="item-input" value="{{form.goods_freight}}" type="number" bindinput='_setParams' data-key="form.goods_freight" placeholder="单位：( 元 )" />
+    </view>
+    <view class='item'>
+      <view class="item-title item-tit">发货时间</view>
+      <input class="item-input" value="{{form.goods_deliveryTime}}" type="number" bindinput='_setParams' data-key="form.goods_deliveryTime" placeholder="单位：( 小时 )" />
+    </view>
+  </block>
+    <block wx:if="{{goodsType=='true'}}">
+    <view class='item'>
+      <view class="item-title">限时抢购</view>
+      <radio-group class="item-input" bindchange='_setParams' data-key="form.goods_discount">
+        <label>
+          <radio value="01" color="#fdad00" checked="{{form.goods_discount=='01'}}" />是
+        </label>
+        <label>
+          <radio value="02" color="#fdad00" checked="{{form.goods_discount=='02'}}" />否
+        </label>
+      </radio-group>
+    </view>
+    <view class='item' wx:if="{{form.goods_discount=='01'}}">
+      <view class="item-title item-tit">最大抢购数量</view>
+      <input class="item-input" value="{{form.goods_number}}" bindinput='_setParams' data-key="form.goods_number" placeholder="请输入最大抢购数量" type="number"/>
+    </view>
+    <view class='item'>
+      <view class="item-title">社区团购</view>
+      <radio-group class="item-input" bindchange='_setParams' data-key="form.goods_group">
+        <label>
+          <radio value="01" color="#fdad00" checked="{{form.goods_group=='01'}}" />是
+        </label>
+        <label>
+          <radio value="02" color="#fdad00" checked="{{form.goods_group=='02'}}" />否
+        </label>
+      </radio-group>
+    </view>
+  </block>
+  
+  <view class='item'>
+    <view class="item-title">{{form.goods_distribution==='01'?'商品标题':'描述'}}</view>
+    <textarea class="item-input-describe" value="{{form.goods_describe}}" bindinput='_setParams' data-key="form.goods_describe" placeholder="{{form.goods_distribution==='01'?'此处填写内容为（嗨购商品标题）':'请输入描述（选填）'}}" />
+  </view>
+
+  <view class='item item-border'>
+    <view class="item-title item-tit">图片</view>
+  </view>
+  <view class='imgs'>
+    <view class="img-item">
+      <text class="img-item-title">(商品首图)</text>
+      <image wx:if="{{img1Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img1Base64" bindtap="_delImg"></image>
+      <image wx:if="{{img1Base64}}" class="img-item-o" src="{{util._getImageUrl(img1Base64)}}"></image>
+      <view wx:else class="img-item-x" data-baseUrl="img1Base64" bindtap="_getImage">+</view>
+    </view>
+    <block wx:if="{{form.goods_discount=='01'}}">
+      <view class="img-item">
+        <text class="img-item-title">(限时抢购)</text>
+        <image wx:if="{{img2Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img2Base64" bindtap="_delImg"></image>
+        <image wx:if="{{img2Base64}}" class="img-item-o" src="{{util._getImageUrl(img2Base64)}}"></image>
+        <view wx:else class="img-item-x" data-baseUrl="img2Base64" bindtap="_getImage">+</view>
+      </view>
+    </block>
+    <block wx:if="{{form.goods_group=='01'}}">
+      <view class="img-item">
+        <text class="img-item-title">(社区团购)</text>
+        <image wx:if="{{img3Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img3Base64" bindtap="_delImg"></image>
+        <image wx:if="{{img3Base64}}" class="img-item-o" src="{{util._getImageUrl(img3Base64)}}"></image>
+        <view wx:else class="img-item-x" data-baseUrl="img3Base64" bindtap="_getImage">+</view>
+      </view>
+    </block>
+    <block wx:if="{{goodsType=='false'}}">
+      <view class="img-item">
+        <text class="img-item-title">(商品详情图)</text>
+        <image wx:if="{{img2Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img2Base64" bindtap="_delImg"></image>
+        <image wx:if="{{img2Base64}}" class="img-item-o" src="{{util._getImageUrl(img2Base64)}}"></image>
+        <view wx:else class="img-item-x" data-baseUrl="img2Base64" bindtap="_getImage">+</view>
+      </view>
+
+      <view class="img-item">
+        <text class="img-item-title">(商品详情图)</text>
+        <image wx:if="{{img3Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img3Base64" bindtap="_delImg"></image>
+        <image wx:if="{{img3Base64}}" class="img-item-o" src="{{util._getImageUrl(img3Base64)}}"></image>
+        <view wx:else class="img-item-x" data-baseUrl="img3Base64" bindtap="_getImage">+</view>
+      </view>
+
+      <view class="img-item">
+        <text class="img-item-title">(商品详情图)</text>
+        <image wx:if="{{img4Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img4Base64" bindtap="_delImg"></image>
+        <image wx:if="{{img4Base64}}" class="img-item-o" src="{{util._getImageUrl(img4Base64)}}"></image>
+        <view wx:else class="img-item-x" data-baseUrl="img4Base64" bindtap="_getImage">+</view>
+      </view>
+
+      <view class="img-item">
+        <text class="img-item-title">(商品详情图)</text>
+        <image wx:if="{{img5Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img5Base64" bindtap="_delImg"></image>
+        <image wx:if="{{img5Base64}}" class="img-item-o" src="{{util._getImageUrl(img5Base64)}}"></image>
+        <view wx:else class="img-item-x" data-baseUrl="img5Base64" bindtap="_getImage">+</view>
+      </view>
+
+      <view class="img-item">
+        <text wx:if="{{form.goods_distribution=='01'}}" class="img-item-title">(海报图)</text>
+        <text wx:else class="img-item-title">(商品详情图)</text>
+        <image wx:if="{{img6Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img6Base64" bindtap="_delImg"></image>
+        <image wx:if="{{img6Base64}}" class="img-item-o" src="{{util._getImageUrl(img6Base64)}}"></image>
+        <view wx:else class="img-item-x" data-baseUrl="img6Base64" bindtap="_getImage">+
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="note">
+    注：{{goodsType=='false' && form.goods_distribution=='01'?'海报图640*1040，其余':''}}图片尺寸为600*450
+  </view>
+  <view class='submit'>
+    <button class='save' bindtap="_addGoods">提交</button>
+  </view>
+</view>

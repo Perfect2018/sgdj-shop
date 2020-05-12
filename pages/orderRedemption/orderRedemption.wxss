@@ -1,0 +1,29 @@
+/* pages/orderRedemption/orderRedemption.wxss */
+
+.search {
+  display: flex;
+  width: 95%;
+  justify-content: spacr-between;
+  align-items: center;
+  height: 90rpx;
+  box-sizing: border-box;
+  margin: 40rpx auto;
+}
+
+.search-input {
+  width: 70%;
+  height: 90rpx;
+  border: 1rpx solid #e0e0e0;
+  line-height: 90rpx;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+}
+
+.btn {
+  width: 30%;
+  text-align: center;
+  background-color: #fdad00;
+  color: #fff;
+  height: 90rpx;
+  line-height: 90rpx;
+}

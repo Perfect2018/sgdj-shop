@@ -1,0 +1,120 @@
+/* pages/fullReductionSetting/fullReductionSetting.wxss */
+
+.page {
+  /* width: 94%; */
+  /* margin-left: 3%; */
+  font-size: 30rpx;
+  /* padding: 20rpx; */
+}
+
+.item {
+  width: 100%;
+  font-size: 0.9rem;
+  margin: 20rpx 0;
+  display: flex;
+  align-items: center;
+  padding: 10rpx;
+  box-sizing: border-box
+}
+
+.top-title{
+  height: 50rp;
+  line-height: 50rpx;
+  font-size: 40rpx;
+  text-align: center;
+  padding: 20rpx;
+  margin: 20rpx 0;
+}
+
+.item-o {
+  width: 70%;
+  height: 60rpx;
+  display: flex;
+  font-size: 0.9rem;
+  /* justify-content: center; */
+  padding-left: 10rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 8rpx;
+  align-items: center;
+}
+
+.item-btns {
+  /* width: 100%; */
+  width: 100rpx;
+  box-sizing: border-box;
+  text-align: center;
+  margin-left: -10rpx;
+}
+
+.item-btns .btn {
+  background-color: #fdad00;
+  /* color: #fff; */
+  /* width: 60rpx; */
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  width: 100%;
+  line-height: 60rpx;
+  height: 60rpx;
+  color: black;
+  border: 1rpx solid #808080
+}
+
+/* .item-btns .btn-l {
+  background-color: #fff;
+  color: #fdad00;
+} */
+
+.add-btn,.reduce-btn{
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  /* color: #fdad00;
+  border:2rpx solid #fdad00; */
+  margin-left: 20rpx;
+  /* text-align: center;
+  font-size: 50rpx; */
+  /* padding: 6rpx; */
+  box-sizing: border-box
+}
+
+.add-btn image,.reduce-btn image{
+  width: 100%;
+  height: 100%
+}
+
+.item .item-title {
+  /* min-width: 180rpx; */
+  text-align: left;
+  /* padding: 25rpx; */
+  box-sizing: border-box;
+  /* text-align: justify; */
+}
+
+.item .item-input {
+  /* width: 100%; */
+  width: 60rpx;
+  color: #808080;
+  text-align: center;
+  border-bottom: 1rpx solid black;
+  /* padding: 25rpx 0; */
+}
+
+.save {
+  width: 90%;
+  margin-left: 5%;
+  background: #fdad00;
+  color: #fff;
+  border-radius: 20rpx;
+  margin-top: 40rpx;
+}
+
+.item-right{
+  display: flex;
+}
+.item-right view{
+  flex: 1
+}
+/* .btn .btn-l{
+  width: 50rpx;
+  height: 50rpx;
+} */

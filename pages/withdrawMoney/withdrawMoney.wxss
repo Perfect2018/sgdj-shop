@@ -1,0 +1,47 @@
+/* pages/withdrawMoney/withdrawMoney.wxss */
+
+.page {
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.blod {
+  font-weight: bold;
+  padding: 10rpx 0;
+}
+
+.money-item {
+  width: 100%;
+  margin: 50rpx 0;
+  text-align: center;
+}
+
+.money-item .input-title {
+  color: #888;
+  text-align: left;
+  padding: 0 25rpx 25rpx 0;
+}
+
+.money-item .money-logo {
+  padding-top: 50rpx;
+  width: 160rpx;
+  margin: auto;
+  display: block;
+}
+
+.money-item .money-color {
+  color: #ffa600;
+}
+
+.money-item .money-input {
+  border: 1rpx solid #eee;
+  padding: 20rpx;
+  text-align: left;
+  border-radius: 10rpx;
+}
+
+.btn {
+  color: #fff;
+  background-color: #ffa600;
+}

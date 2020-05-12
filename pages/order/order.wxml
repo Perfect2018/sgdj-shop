@@ -1,0 +1,123 @@
+<!--pages/order/order.wxml-->
+<wxs src="../../wxs/util.wxs" module="util"></wxs>
+<view>
+	<view class='order'>
+			<text>{{orderCount}}单</text>
+			<view class="order-btn" bindtap="statistics">订单统计</view>
+		<view class='goodsDate'>数据统计截止时间到 : {{newDate}}</view>
+	</view>
+	<view class='goods_type'>
+		<view class="{{flag?' btn':'active btn'}}" bindtap='_setTimely'>即时送</view>
+		<view class="{{flag?'active btn':' btn'}}" bindtap='_setGlobal'>全球臻选</view>
+	</view>
+	<view class='order_state'>
+		<block wx:for="{{timely_order}}" wx:key="index">
+			<view class="timely_order {{currentIndex==index?'active':''}}" data-index='{{index}}' data-state='{{item.state}}' bindtap='handleOrderList'>{{item.name}}</view>
+		</block>
+	</view>
+	<view class='orderList'>
+		<block wx:for="{{orderList}}" wx:key="index">
+			<view class='item'>
+				<checkbox color="#fdad00" checked="{{item.checked}}" bindtap="_showDetail" data-index="{{index}}" class=" {{selectOrder?'item-checked-o':'item-checked'}}" />
+				<view class=" {{selectOrder?'item-detail-o ':'item-detail'}}" bindtap="_showDetail" data-index="{{index}}">
+					<view wx:if="{{currentIndex===4}}" class='between orderNum'>
+						<text class="first">订单编号：{{item.orderNo}}</text>
+						<text class="last">退款金额:￥{{util._getFixedMoney(item.refund.orderAmt)}}</text>
+					</view>
+					<view wx:else class='between orderNum'>
+						<text class="first">订单编号：{{item.orderNo}}</text>
+						<text class="last">订单金额:￥{{util._getFixedMoney(item.originalAmt+item.knightAmt)}}</text>
+					</view>
+          <view wx:if="{{showOrder == index}}">
+            <text class="cust_title">订单信息</text>
+          </view>
+					<view class="between order_count" wx:if="{{item.isShow}}" wx:if="{{showOrder == index}}">
+						<text wx:if="{{currentIndex===4}}" class="first">订单金额:￥{{util._getFixedMoney(item.originalAmt+item.knightAmt)}}</text>
+						<text class="last">商品数量：{{util._getOrderGoods(item)}}件</text>
+					</view>
+					<view wx:if="{{currentIndex===4}}" class='between order_complate'>
+						<text class="first">退款原因：{{item.refund.refundReason}}</text>
+					</view>
+					<view wx:if="{{currentIndex!==4}}" class='between order_complate'>
+						<text class="first">创建时间：{{util._getYMD(item.createDate)}}</text>
+						<text class="last">配送方式：{{item.distributionType=="01"?'平台配送':(item.distributionType=="02"?"客户自提":(item.distributionType=="03"?"物流快递":"商户配送"))}}</text>
+					</view>
+				</view>
+				<block wx:if="{{showOrder == index}}">
+					<view>
+						<view wx:if="{{currentIndex===4}}" class='between order_complate'>
+							<text class="first">创建时间：{{util._getYMD(item.createDate)}}</text>
+							<text class="last">配送方式：{{item.distributionType=="01"?'平台配送':(item.distributionType=="02"?"客户自提":(item.distributionType=="03"?"物流快递":"商户配送"))}}</text>
+						</view>
+						<view class="cust_title">客户信息</view>
+						<view class="line">客户名称：
+							<text bindtap="_copyright" data-content="{{item.receiver.receiverName?item.receiver.receiverName:''}}">{{item.receiver.receiverName?item.receiver.receiverName:''}}</text>
+						</view>
+						<view class="line">客户地址：
+							<view bindtap="_copyright" class="line-right" data-content="{{util._isNotNull(item.receiver.receiverProvince+''+item.receiver.receiverCity+''+item.receiver.receiverCounty+''+item.receiver.receiverAddress)}}">{{util._isNotNull(item.receiver.receiverProvince+''+item.receiver.receiverCity+''+item.receiver.receiverCounty+''+item.receiver.receiverAddress)}}</view>
+						</view>
+						<view class="line">联系方式：
+							<text bindtap="_copyright" data-content="{{item.receiver.receiverTel1?item.receiver.receiverTel1:''}}">{{item.receiver.receiverTel1?item.receiver.receiverTel1:''}}</text>
+						</view>
+						<view wx:if="{{item.remark || item.remark=='null'}}" class="between">客户留言：{{item.remark}}</view>
+					</view>
+					<view class="hr"></view>
+					<block wx:for="{{item.list}}" wx:for-item="goods" wx:key="index">
+						<view class="between">
+							<text>{{goods.goodsName}}</text>
+							<text>{{goods.couponRate+"元"}} X {{goods.goodsCount}}件</text>
+						</view>
+					</block>
+					<view class="between">
+						<text>配送费</text>
+						<text>{{util._getFixedMoney(item.knightAmt)}}元</text>
+					</view>
+					<view class="between" wx:if="{{item.expressNumber!='null'&&item.expressNumber}}">
+						<text>快递单号</text>
+						<text>{{item.expressNumber}}</text>
+					</view>
+				</block>
+				<view>
+					<!-- 即时送 -->
+					<!-- 把block标签换成了view标签 -->
+					<view wx:if="{{state==='02' && currentIndex==0}}" class="btns">
+						<view wx:if="{{item.distributionType=='01'||item.distributionType=='04'}}" class="btn" data-index="{{index}}" data-orderId="{{item.id}}" bindtap="_confirmOrderDispatch">确认订单并申请配送</view>
+						<view class="btn btn-l" data-index="{{index}}" data-orderId="{{item.id}}" bindtap="_confirmOrder">确认订单</view>
+						<view class="btn btn-p" data-index="{{index}}" bindtap="_printOrder">打印订单</view>
+					</view>
+					<view wx:if="{{state==='02' && currentIndex===1}}" class="btns">
+						<view class="btn btn-p" data-index="{{index}}" bindtap="_printOrder">打印订单</view>
+						<view wx:if="{{item.distributionType=='02'}}" class="btn btn-l">待提货</view>
+						<view class="btn btn-l" data-orderId="{{item.id}}" data-index="{{index}}" data-orderId="{{item.id}}" bindtap="_confirmDelivery" wx:else>确认配送</view>
+					</view>
+          <view wx:if="{{state==='02' && currentIndex===4}}" class="btns">
+						<view class="btn btn-p" data-phone="{{item.receiver.receiverTel1}}" bindtap="_callCusPhone">联系买家</view>
+						<view class="btn btn-l" data-orderId="{{item.id}}" data-index="{{index}}" bindtap="_confirmRefund"  wx:if="{{item.orderState=='14'}}">确认退款</view>
+            <view wx:if="{{item.orderState=='13'}}" class="btn btn-2">已退款</view>
+					</view>
+					<!-- 全球臻选 -->
+					<view wx:if="{{state==='01' && currentIndex==0}}" class="btns">
+						<view class="btn btn-p" data-index="{{index}}" bindtap="_printOrder">打印订单</view>
+						<view class="btn btn-l" data-index="{{index}}" data-orderId="{{item.id}}" bindtap="_confirmOrder">确认订单</view>
+					</view>
+					<view wx:if="{{state==='01' && currentIndex===1}}" class="btns">
+						<view class="btn btn-p" data-index="{{index}}" bindtap="_printOrder">打印订单</view>
+						<view class="btn btn-l" data-index="{{index}}" data-orderId="{{item.id}}" bindtap="_confirmDelivery">确认发货</view>
+					</view>
+					<view wx:if="{{state==='01' && currentIndex===4}}" class="btns">
+						<view class="btn btn-p" data-phone="{{item.receiver.receiverTel1}}" bindtap="_callCusPhone">联系买家</view>
+						<view class="btn btn-l" data-orderId="{{item.id}}" data-index="{{index}}" bindtap="_confirmRefund" wx:if="{{item.orderState=='14'}}">确认退款</view>
+            <view wx:if="{{item.orderState=='13'}}" class="btn btn-2">已退款</view>
+		<!-- <view wx:if="{{orderDetail.orderState==='14'}}" class="item" bindtap="_toView" data-navigate="orderRefund" data-id="{{orderId}}">退款中</view> -->
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+	<view wx:if="{{currentIndex==3}}" class="fixedOrder" bindtap="_selectOrder">{{selectOrder?selectOrderList.length?"确认打印":"取消打印":"打印订单"}}</view>
+</view>
+<popup id='popup' title='添加快递单号' confirm-text='添加' bind:confirm="_confirm">
+	<view slot="content" class="content">
+		<input class="input" placeholder="请输入快递单号" value="{{trackingNumber}}" bindinput="_setParams" data-key="trackingNumber" />
+	</view>
+</popup>

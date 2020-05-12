@@ -1,0 +1,13 @@
+/* pages/marketingCampaign/marketingCampaign.wxss */
+
+.market {
+  width: 94%;
+  margin-left: 3%;
+  font-size: 30rpx;
+}
+
+.market-item {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #eee;
+}

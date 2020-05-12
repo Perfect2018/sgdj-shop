@@ -1,0 +1,87 @@
+/* pages/my/my.wxss */
+
+.header {
+  width: 100%;
+  min-height: 300rpx;
+  background: #fdad00;
+  text-align: center;
+  color: #fff;
+  font-size: 32rpx;
+  padding: 0;
+}
+
+.shop {
+  position: relative;
+  width: 120rpx;
+  height: 120rpx;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.shopLogo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+
+.shopName {
+  margin: 10rpx 0;
+}
+
+.shop-state {
+  position: absolute;
+  width: 120rpx;
+  height: 60rpx;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: block;
+  color: #fdad00;
+  padding: 5rpx 10rpx;
+  font-size: 0.6rem;
+  top: 70rpx;
+  text-align: center;
+}
+
+.detail {
+  display: flex;
+  margin-top: 20rpx;
+}
+
+.detail>view {
+  width: 25%;
+  text-align: center;
+  font-size: 28rpx;
+  border-right: 1rpx solid #fff;
+}
+
+.detail>view:last-child {
+  border: none;
+}
+
+.setting {
+  position: absolute;
+  right: 30rpx;
+  top: 5rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.content {
+  width: 94%;
+  margin-left: 3%;
+  font-size: 30rpx;
+}
+
+.content-item {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.btn {
+  width: 90%;
+  background: #fdad00;
+  color: #fff;
+  margin: 20px auto;
+}

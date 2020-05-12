@@ -1,0 +1,18 @@
+<!--pages/withdrawMoney/withdrawMoney.wxml-->
+<view class="page">
+  <view class="money-item">
+    <image class="money-logo" mode="widthFix" src="../../image/tixian.png"></image>
+    <view class="blod">可提现金额</view>
+    <view class="blod">￥{{money}}</view>
+  </view>
+  <view class="money-item">
+    <input class="money-input" value="{{amount}}" bindinput='_amount' placeholder="输入金额满100元可提现"></input>
+  </view>
+
+  <view class="money-item">
+    <view class="input-title">可全部提现:
+      <text class="money-color">{{money}}</text>元</view>
+    <input class="money-input" value="{{name}}" bindinput='_name' placeholder="请输入微信绑定银行卡开户姓名"></input>
+  </view>
+  <button class="btn" bindtap="_getMoney">提现</button>
+</view>

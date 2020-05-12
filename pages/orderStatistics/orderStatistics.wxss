@@ -1,0 +1,63 @@
+/* pages/orderStatistics/orderStatistics.wxss */
+page{
+  padding: 20rpx 10rpx;
+  box-sizing: border-box;
+}
+.select-date{
+  height: 80rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  padding: 0 20rpx;
+}
+
+.comfirm-btn{
+  height: 60rpx;
+  width: 150rpx;
+  border-radius: 10rpx;
+  background-color: #FDAD00;
+  text-align: center;
+  line-height: 60rpx;
+  color: #fff;
+}
+
+.title{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-bottom: 20rpx;
+  padding: 0 20rpx;
+  font-size: 30rpx;
+  box-sizing: border-box;
+}
+
+.title-count{
+  width: 150rpx;
+  text-align: center;
+}
+
+.product{
+  height: 50rpx;
+  line-height: 50rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.good-name{
+  max-width: 500rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.count{
+  width: 150rpx;
+  text-align: center;
+}

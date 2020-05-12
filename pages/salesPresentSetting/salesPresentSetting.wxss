@@ -1,0 +1,38 @@
+/* pages/salesPresentSetting/salesPresentSetting.wxss */
+
+.page {
+  width: 94%;
+  margin-left: 3%;
+  font-size: 30rpx;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  font-size: 0.9rem;
+  justify-content: flex-start;
+  border-bottom: 1rpx solid #eee;
+}
+
+.item .item-title {
+  width: 100rpx;
+  text-align: left;
+  padding: 25rpx;
+  box-sizing: border-box;
+}
+
+.item .item-input {
+  width: 100%;
+  color: #808080;
+  text-align: left;
+  padding: 25rpx 0;
+}
+
+.save {
+  width: 90%;
+  margin-left: 5%;
+  background: #fdad00;
+  color: #fff;
+  border-radius: 20rpx;
+  margin-top: 40rpx;
+}

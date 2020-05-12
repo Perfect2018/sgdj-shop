@@ -1,0 +1,70 @@
+<!--pages/goods/goods.wxml-->
+<wxs src="../../wxs/util.wxs" module="util"></wxs>
+<view>
+  <view class='header'>
+    <view class="goods_type">
+      <view class="btn {{goodsType?'active':''}}" bindtap='_isType' data-state="02">
+        <view class="tit">即时送</view>
+        <view class="tit-sm">(限时送达)</view>
+      </view>
+      <view class="btn {{goodsType?'':'active'}}" bindtap='_isType' data-state="01">
+        <view class="tit">全球臻选</view>
+        <view class="tit-sm">(源头直发)</view>
+      </view>
+    </view>
+    <view class='goodsCount'>
+      商品总量{{goodsCount}}件
+      <button size='mini' class='addGoods' bindtap='addGoods'>添加</button>
+    </view>
+    <view class='goodsDate'>数据统计截止时间到:{{newDate}}</view>
+  </view>
+  <view class="flex-start">
+    <input placeholder='请输入商品名称' class="search-input" value="{{kw}}" bindinput="_search" />
+    <button class='search-button' bindtap="_searchKW">搜索</button>
+  </view>
+  <view class='content'>
+    <view class='goods_classify'>
+      <view class='goods_classify_list'>
+        <block wx:for="{{classifyList}}" wx:key="index">
+          <text class="{{classifyIndex == item.id? 'goods_classify_item_active goods_classify_item': 'goods_classify_item'}}" bindtap='_isClassify' data-id="{{item.id}}">{{item.name}}</text>
+        </block>
+      </view>
+    </view>
+    <view class='goods_state'>
+      <text class="{{isPutaway? 'active_goods_state': ''}}" bindtap='_isPutaway' data-flag="{{true}}">已上架</text>
+      <text class="{{isPutaway? '': 'active_goods_state'}}" bindtap='_isPutaway' data-flag="{{false}}">待上架</text>
+    </view>
+    <block wx:for="{{goodsList}}" wx:key="index">
+      <view class='goods-item'>
+        <view class='goodsLogo'>
+          <view wx:if="{{item.distribution==='01'}}" class="goods-item-tit">分销</view>
+          <image src='{{util._getImageUrl(item.img1)}}' mode='scaleToFill' class='shopLogo' />
+        </view>
+        <view class='goodsContent'>
+          <view class='operate'>
+            <view class="item-name">{{item.goodsName}}</view>
+            <block wx:if="{{isPutaway}}">
+              <!-- <block wx:if="{{!goodsType}}">
+                <view wx:if="{{item.isRecommendGoods=='01'}}" class='btn btn-l' bindtap="_toView" data-navigate="purchaseHi" data-id="{{item.id}}">嗨购</view>
+                <view wx:elif="{{item.isRecommendGoods=='02'}}" class='btn btn-l'>嗨购中</view>
+                <view wx:elif="{{item.isRecommendGoods=='03'}}" class='btn btn-l'>审核中</view>
+                <view wx:elif="{{item.isRecommendGoods=='04'}}" class='btn btn-l' bindtap="_toView" data-navigate="purchaseHi" data-id="{{item.id}}">驳回</view>
+              </block> -->
+              <view class='btn' data-index="{{index}}" bindtap="_soldOut">下架</view>
+            </block>
+            <block wx:else>
+              <view class='btn btn-l' data-index="{{index}}" bindtap="_delete">删除</view>
+              <view class='btn' data-goodsId="{{item.id}}" bindtap="_editGoods">编辑</view>
+              <view class='btn' data-index="{{index}}" bindtap="_putaway">上架</view>
+            </block>
+          </view>
+          <view class='price'>￥{{item.couponRate}}</view>
+          <view class='sale'>
+            <text class="sale-item">已售：{{item.soldSize?item.soldSize:0}}</text>
+            <text class="sale-item">库存：{{item.stockSize?item.stockSize:0}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

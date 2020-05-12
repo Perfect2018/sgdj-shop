@@ -1,0 +1,5 @@
+<!--pages/orderRedemption/orderRedemption.wxml-->
+<view class="search">
+  <input class="search-input" value="{{keyCode}}" bindinput='_setParams' data-key="keyCode" placeholder='请输入核销码' />
+  <view class="btn" bindtap="_writeOff">立即核销</view>
+</view>

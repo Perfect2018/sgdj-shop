@@ -1,0 +1,19 @@
+<view>
+  <!-- 分类显示 -->
+  <view class="classify">
+    <view class="btn {{isShow?'active':''}}" bindtap="_isShow">待回复</view>
+    <view class="btn {{isShow?'':'active'}}" bindtap="_isShow">差评</view>
+  </view>
+  <!-- 待回复 -->
+  <view class="replyList" wx:if="{{isShow}}">
+    <block wx:for="{{replyList}}" wx:for-item="reply" wx:key="index">
+      <view class="order" data-reply_id='{{reply.id}}' bindtap='_toDetail'>
+
+      </view>
+    </block>
+  </view>
+  <!-- 差评 -->
+  <view class="commentList" wx:else>
+    <!-- 2122321 -->
+  </view>
+</view>

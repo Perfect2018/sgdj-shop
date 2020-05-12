@@ -1,0 +1,35 @@
+<view>
+  <view wx:if="{{isShowOtherLogin}}" class="login-form">
+    <view class="login-title">
+      <text></text>登录</view>
+    <view class="login-item">
+      <input class="input-item" placeholder="请输入手机号" value="{{phone}}" type="number" bindinput="_phone"></input>
+    </view>
+    <view class="login-item">
+      <input class="input-item" placeholder="请输入密码(6-12位)" value="{{password}}" type="password" bindinput="_password"></input>
+    </view>
+    <button class="login-btn" bindtap="_login">登录</button>
+    <view class="forget-btn" bindtap="_toView" data-navigate="forgetPassword">忘记密码</view>
+  </view>
+  <view wx:else class="container">
+    <view class="userinfo">
+      <block wx:if="{{!hasUserInfo && canIUse}}">
+        <image class="userinfo-avatar" src="{{logo}}"></image>
+        <text class="userinfo-nickname">蔬果到家商户版</text>
+      </block>
+      <block wx:else>
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+    <view class="usermotto">
+      <view class="user-motto">{{motto}}</view>
+    </view>
+    <view class="btns">
+      <button class="btn" open-type="getUserInfo" bindgetuserinfo="_getUserInfo">点击登录</button>
+      <!-- <view class="experience" wx:if="isShow" bindtap="_experience">点击体验商户版</view> -->
+    </view>
+  </view>
+  <view class="otherLogin" wx:if="{{isShowOtherLogin}}" bindtap="_otherLogin">微信一键登录</view>
+  <view class="otherLogin" wx:else bindtap="_otherLogin">账号密码登录</view>
+</view>

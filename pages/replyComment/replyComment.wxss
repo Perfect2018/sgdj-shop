@@ -1,0 +1,22 @@
+/* pages/replyComment/replyComment.wxss */
+
+.classify {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+}
+
+.classify .btn {
+  display: inline-block;
+  width: 50%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-bottom: 2rpx solid #eee;
+  transition: border 1s linear;
+}
+
+.classify .btn.active {
+  color: #fdad00;
+  border-color: #fdad00;
+}

@@ -1,0 +1,134 @@
+/**index.wxss**/
+
+.shopMsg {
+  width: 96%;
+  margin-left: 2%;
+  text-align: left;
+  padding-left: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.shopMsg .shop-logo {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.shop-logo .img {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.shop-logo .state {
+  position: absolute;
+  width: 100%;
+  height: 35rpx;
+  font-size: 20rpx;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.shopMsg .shopName {
+  font-size: 36rpx;
+  color: #fff;
+  margin-left: 30rpx;
+  font-weight: bold;
+}
+
+.shopState {
+  width: 100%;
+  margin-top: 10rpx;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+
+.state_btn {
+  width: 200rpx;
+  height: 62rpx;
+  line-height: 62rpx;
+  border-radius: 10rpx;
+  background: transparent;
+  border: 3rpx solid #fff;
+  margin: 10rpx 30rpx;
+  color: #fff;
+}
+
+.select_state {
+  background: #fff;
+  color: #fdad00;
+}
+
+.order {
+  width: 100%;
+  display: flex;
+}
+
+.orderTitle {
+  display: block;
+  margin: 40rpx 0 20rpx;
+}
+
+.actu_order, .order_income {
+  width: 50%;
+  height: 80rpx;
+  font-size: 28rpx;
+}
+
+.actu_order {
+  border-right: 1rpx solid #fff;
+}
+
+.statistics {
+  width: 100%;
+  font-size: 36rpx;
+  vertical-align: middle;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.data_item {
+  width: 50%;
+  vertical-align: middle;
+  display: flex;
+  justify-content: start;
+  padding: 20rpx 0 20rpx 30rpx;
+  box-sizing: border-box;
+  border-right: 1rpx solid #eee;
+  border-bottom: 1rpx solid #eee;
+}
+
+.data_item:nth-last-child(2), .data_item:last-child {
+  border-bottom: none;
+}
+
+.shopLogo {
+  line-height: 80rpx;
+  width: 100rpx;
+  height: 100rpx;
+  padding: 5rpx;
+  box-sizing: border-box;
+  /* border-radius: 50%; *//* float: left; *//* padding-left: 30rpx; */
+}
+
+.title {
+  color: #111;
+  font-size: 34rpx;
+  line-height: 60rpx;
+  font-weight: 500;
+}
+
+.messgaae {
+  color: #aaa;
+  font-size: 26rpx;
+  line-height: 40rpx;
+}

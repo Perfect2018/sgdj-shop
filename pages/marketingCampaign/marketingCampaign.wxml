@@ -1,0 +1,5 @@
+<view class="market">
+  <block wx:for="{{marketList}}" wx:key="index">
+    <view class="market-item" bindtap="_toView" data-navigate="{{item.market}}" data-name="{{item.name}}">{{item.name}}</view>
+  </block>
+</view>

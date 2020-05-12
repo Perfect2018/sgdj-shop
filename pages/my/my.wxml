@@ -1,0 +1,44 @@
+<!--pages/my/my.wxml-->
+<wxs src="../../wxs/util.wxs" module="util"></wxs>
+<view>
+  <view class='header'>
+    <view class="shop">
+      <image class='shopLogo' src='{{util._getImageUrl(shop.shopLogo)}}'></image>
+      <view class="shop-state">{{shop.shopState=='00'?'已打烊':(shop.shopState=='01'?'营业中':'')}}</view>
+    </view>
+    <image class='setting' bindtap='setting' src="../../image/setting_img.png"></image>
+    <view class='shopName'>{{shop.shopName}}</view>
+    <view class='detail'>
+      <view>
+        <view>{{myShop.staySettleAccountsMenoy?myShop.staySettleAccountsMenoy:'0.00'}} 元</view>
+        <view>待结算</view>
+      </view>
+      <view bindtap="_toWithdrawMoneyView" data-money="{{myShop.withdrawDepositMenoy?myShop.withdrawDepositMenoy:'0.00'}}">
+        <view>{{myShop.withdrawDepositMenoy?myShop.withdrawDepositMenoy:'0.00'}} 元</view>
+        <view>可提现金额</view>
+      </view>
+      <view>
+        <view>{{myShop.totalWithdrawDepositMenoy?myShop.totalWithdrawDepositMenoy:'0.00'}} 元</view>
+        <view>累计提现</view>
+      </view>
+      <view>
+        <view>{{myShop.totalSalesToday?myShop.totalSalesToday:'0.00'}}元</view>
+        <view>今日销售额</view>
+      </view>
+    </view>
+  </view>
+  <view class='content'>
+    <view class="content-item" bindtap="_toView" data-navigate="orderRedemption">订单核销</view>
+    <view class="content-item" bindtap="_toView">我的账单</view>
+    <view class="content-item" bindtap="_toView" data-navigate="fullReductionSetting" data-name="营销活动">营销活动</view>
+    <view class="content-item" bindtap="_toView">物料申请</view>
+    <view class="content-item" bindtap="_toView">系统消息</view>
+    <view class="content-item" bindtap="_callCusPhone">联系客服
+      <text class="color-aaa fs-24">(点击拨号)</text>
+    </view>
+    <view class="content-item" bindtap="_toView">订单设置</view>
+    <view class="content-item">当前版本：1.0</view>
+  </view>
+  <button class='btn' bindtap="_reLaunch">切换账号</button>
+
+</view>

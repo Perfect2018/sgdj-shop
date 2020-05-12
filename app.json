@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/imageCropper/imageCropper",
+    "pages/replyComment/replyComment",
+    "pages/businessStatistics/businessStatistics",
+    "pages/passengerFlowAnalysis/passengerFlowAnalysis",
+    "pages/commodityAnalysis/commodityAnalysis",
+    "pages/customerAnalysis/customerAnalysis",
+    "pages/storeAnalysis/storeAnalysis",
+    "pages/shopSetting/shopSetting",
+    "pages/my/my",
+    "pages/forgetPassword/forgetPassword",
+    "pages/orderRedemption/orderRedemption",
+    "pages/withdrawMoney/withdrawMoney",
+    "pages/marketingCampaign/marketingCampaign",
+    "pages/fullReductionSetting/fullReductionSetting",
+    "pages/salesPresentSetting/salesPresentSetting",
+    "pages/order/order",
+    "pages/goods/goods",
+    "pages/addGoods/addGoods",
+    "pages/editGoods/editGoods",
+    "pages/purchaseHi/purchaseHi",
+    "pages/orderStatistics/orderStatistics"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FDAD00",
+    "navigationBarTitleText": "蔬果到家商户端",
+    "navigationBarTextStyle": "white",
+    "onReachBottomDistance": 500
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#F80",
+    "list": [
+      {
+        "iconPath": "/image/home_no.png",
+        "selectedIconPath": "/image/home_yes.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "iconPath": "/image/order_no.png",
+        "selectedIconPath": "/image/order_yes.png",
+        "pagePath": "pages/order/order",
+        "text": "订单"
+      },
+      {
+        "iconPath": "/image/cargo_no.png",
+        "selectedIconPath": "/image/cargo_yes.png",
+        "pagePath": "pages/goods/goods",
+        "text": "商品"
+      },
+      {
+        "iconPath": "/image/me_no.png",
+        "selectedIconPath": "/image/me_yes.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "navigateToMiniProgramAppIdList": [
+    "wx5eeec1e222f5ee3f"
+  ],
+  "sitemapLocation": "sitemap.json"
+}

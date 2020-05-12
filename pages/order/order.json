@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "popup":"../../component/popup/index"
+  },
+  "navigationBarTitleText": "订单总量 "
+}

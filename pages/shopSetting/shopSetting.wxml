@@ -1,0 +1,163 @@
+<!--Pages/shopSetting/shopSetting.wxml-->
+<wxs src="../../wxs/util.wxs" module="util"></wxs>
+<view class='shopSet'>
+  <view class='item'>
+    <text class="item-tit">店铺logo</text>
+    <!-- <image class='shopLogo' src='../../image/sgdj.jpg'></image> -->
+    <image class='shopLogo' src="{{util._getImageUrl(img1Base64)}}" data-type="user" data-baseUrl="img1Base64" bindtap="_getImage"></image>
+  </view>
+  <view class='item'>
+    <text class="item-tit">店铺名称</text>
+    <input class="item-input" value="{{shopName}}" bindinput="_setParams" data-key="shopName" placeholder="请输入店铺名称"></input>
+  </view>
+  <view class='item flex-between'>
+    <text>店铺公告</text>
+    <textarea class="item-input-notice" value="{{shopNotice}}" bindinput="_setParams" data-key="shopNotice" placeholder="请输入店铺公告（选填）" />
+  </view>
+  <view class='item flex-between'>
+    <text class="item-tit">主营分类</text>
+    <view class="tags" bindtap="_isShow">
+      <block wx:for="{{selectClassify}}" wx:key="index">
+        <text class="tag">{{item.name}}</text>
+      </block>
+      <text class="item-input" wx:if="{{selectClassify.length<1}}">请选择分类</text>
+    </view>
+  </view>
+
+  <view class="item-c" wx:if="{{isShow}}">
+    <checkbox-group bindchange="_checkboxChange">
+      <label class="checkbox" wx:for="{{classifyArrayMap}}" wx:key="index">
+        <checkbox value="{{item.id}}" checked="{{item.checked}}" color="#fdad00" />{{item.name}}
+      </label>
+    </checkbox-group>
+  </view>
+
+  <view class='item h-auto flex-between'>
+    <text>分类管理</text>
+    <view class="tags">
+      <block wx:for="{{customClassify}}" wx:key="index">
+        <view class="tag" wx:if="{{item}}">
+          <text>{{item.name}}</text>
+          <image class="tag-del" src="{{deleteImg}}" data-index="{{index}}" bindtap="_delSelectCustomClassify"></image>
+        </view>
+        <view wx:else class="tag tag-color" data-index="{{index}}" bindtap="_showModal">+</view>
+      </block>
+    </view>
+  </view>
+
+
+  <view class='item'>
+    <text class="item-tit">起送价</text>
+    <input class="item-input" value="{{minPrice}}" bindinput="_setParams" data-key="minPrice" placeholder="最低20.00元"></input>
+  </view>
+  <view class='item'>
+    <text class="item-tit">商家地址</text>
+    <!-- <text class="item-input">{{shop.shopStreet}}</text> -->
+    <input class="item-input" value="{{shopStreet}}" bindinput="_setParams" data-key="shopStreet" placeholder="请输入地址"/>
+  </view>
+  <view class='item'>
+    <text>商品配送范围</text>
+    <text class="item-input">半径三公里</text>
+  </view>
+  <view class='item'>
+    <text>开业时间</text>
+    <picker class="item-input" mode="time" value="{{openTime}}" bindchange="_openTimeChange">
+      <view class="picker">{{openTime && openTime!='null'?openTime:'请选择开店时间'}}</view>
+    </picker>
+  </view>
+  <view class='item'>
+    <text>打烊时间</text>
+    <picker class="item-input" mode="time" value="{{closeTime}}" bindchange="_closeTimeChange">
+      <view class="picker">{{closeTime && closeTime!='null'?closeTime:'请选择打烊时间'}}</view>
+    </picker>
+  </view>
+  <block>
+    <view class='item item-border'>
+      <view class="item-title">广告图</view>
+    </view>
+    <view class='imgs'>
+      <view class="ad-img-item" wx:for="{{adListLength}}" wx:key="index">
+        <text class="img-item-title">图 {{item+1}}（建议尺寸900*300）</text>
+        <image wx:if="{{adList[index]}}" class="ad-img-del" src="{{deleteImg}}" data-type="ad" data-baseurl="{{index}}" bindtap="_delImg"></image>
+        <block wx:if="{{adList[index]}}">
+          <image wx:if="{{adList[index]}}" class="ad-img-item-o" src="{{util._getImageUrl(adList[index])}}"></image>
+          <image wx:else class="ad-img-item-o" src="{{util._getImageUrl(adList[index])}}"></image>
+        </block>
+        <view wx:else class="ad-img-item-x" data-type="ad" data-baseUrl="{{index}}" bindtap="_getImage">+</view>
+      </view>
+    </view>
+    <button class='ad-btn' wx:if="{{adListLength<3}}" bindtap="_adListLength">添加</button>
+  </block>
+  <block>
+    <view class='item item-border'>
+      <view class="item-title item-tit">附件资料上传</view>
+    </view>
+    <view class='imgs'>
+      <view class="img-item">
+        <text class="img-item-title">(门头照)</text>
+        <image wx:if="{{img2Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img2Base64" bindtap="_delImg"></image>
+        <block wx:if="{{img2Base64}}">
+          <image wx:if="{{img2Base64}}" class="img-item-o" src="{{util._getImageUrl(img2Base64)}}"></image>
+          <image wx:else class="img-item-o" src="{{util._getImageUrl(img2Base64)}}"></image>
+        </block>
+        <view wx:else class="img-item-x" data-baseUrl="img2Base64" bindtap="_getImage">+</view>
+      </view>
+      <!-- <view class="img-item">
+          <text class="img-item-title">(店内照)</text>
+          <image wx:if="{{img2Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img2Base64" bindtap="_delImg"></image>
+           <block wx:if="{{img2Base64}}">
+            <image wx:if="{{img2Base64}}" class="img-item-o" src="{{img2Base64}}"></image>
+            <image wx:else class="img-item-o" src="{{util._getImageUrl(img2Base64)}}"></image>
+          </block>
+          <view wx:else class="img-item-x" data-baseUrl="img2Base64" bindtap="_getImage">+</view>
+        </view> -->
+      <view class="img-item">
+        <text class="img-item-title">(营业资质)</text>
+        <image wx:if="{{img3Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img3Base64" bindtap="_delImg"></image>
+        <block wx:if="{{img3Base64}}">
+          <image wx:if="{{img3Base64}}" class="img-item-o" src="{{util._getImageUrl(img3Base64)}}"></image>
+          <image wx:else class="img-item-o" src="{{util._getImageUrl(img3Base64)}}"></image>
+        </block>
+        <view wx:else class="img-item-x" data-baseUrl="img3Base64" bindtap="_getImage">+</view>
+      </view>
+
+      <view class="img-item">
+        <text class="img-item-title">(身份证正面)</text>
+        <image wx:if="{{img4Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img4Base64" bindtap="_delImg"></image>
+        <block wx:if="{{img4Base64}}">
+          <image wx:if="{{img4Base64}}" class="img-item-o" src="{{util._getImageUrl(img4Base64)}}"></image>
+          <image wx:else class="img-item-o" src="{{util._getImageUrl(img4Base64)}}"></image>
+        </block>
+        <view wx:else class="img-item-x" data-baseUrl="img4Base64" bindtap="_getImage">+</view>
+      </view>
+
+      <view class="img-item">
+        <text class="img-item-title">(身份证反面)</text>
+        <image wx:if="{{img5Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img5Base64" bindtap="_delImg"></image>
+        <block wx:if="{{img5Base64}}">
+          <image wx:if="{{img5Base64}}" class="img-item-o" src="{{util._getImageUrl(img5Base64)}}"></image>
+          <image wx:else class="img-item-o" src="{{util._getImageUrl(img5Base64)}}"></image>
+        </block>
+        <view wx:else class="img-item-x" data-baseUrl="img5Base64" bindtap="_getImage">+</view>
+      </view>
+      <!-- <view class="img-item" wx:if="{{shopForm.isPrepackagingShop=='1'}}">
+        <text class="img-item-title">(食品流通许可证)</text>
+        <image wx:if="{{img6Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img6Base64" bindtap="_delImg"></image>
+        <block wx:if="{{img6Base64}}">
+          <image wx:if="{{img6Base64}}" class="img-item-o" src="{{util._getImageUrl(img6Base64)}}"></image>
+          <image wx:else class="img-item-o" src="{{util._getImageUrl(img6Base64)}}"></image>
+        </block>
+        <view wx:else class="img-item-x" data-baseUrl="img6Base64" bindtap="_getImage">+</view>
+      </view> -->
+    </view>
+  </block>
+  <view class="note">
+    注：图片尺寸为600*450
+  </view>
+  <button class='save' bindtap="_save">保存</button>
+</view>
+<popup id='popup' title='添加分类' confirm-text='添加' bind:confirm="_confirm">
+	<view slot="content" class="content">
+		<input class="input" placeholder="请输入自定义分类(2-4位中文)" value="{{customClassifyInput}}" bindinput="_setParams" data-key="customClassifyInput"/>
+	</view>
+</popup>

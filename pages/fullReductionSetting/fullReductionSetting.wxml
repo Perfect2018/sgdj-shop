@@ -1,0 +1,55 @@
+<!--pages/fullReductionSetting/fullReductionSetting.wxml-->
+<view class="page">
+	<!-- 优惠券 -->
+
+
+	<block wx:if="{{flag===0}}">
+		<view class="top-title">优惠券设置</view>
+		<view wx:for="{{list}}" wx:key="index">
+			<view class='item'>
+				<view class='item-o'>
+					<view class="item-title">金额：</view>
+					<input class="item-input" value="{{item.totalAmt}}" bindinput='_setParam' data-key="totalAmt" data-index="{{index}}" />
+					<text>元,</text>
+					<view class="item-title">满</view>
+					<input class="item-input" value="{{item.fullAmtToUse}}" bindinput='_setParam' data-key="fullAmtToUse" data-index="{{index}}" />
+					<view>元可用</view>
+					<!-- <view class="item-btns">
+            <view class="btn">确定</view>
+          </view> -->
+				</view>
+
+				<view class="item-btns">
+					<view class="btn">确定</view>
+				</view>
+				<view class="add-btn" data-id="{{item.id}}" bindtap="_addItem">
+					<image src="../../image/add.png"></image>
+				</view>
+				<view class="reduce-btn" bindtap="_delete" data-id="{{item.id}}">
+					<image src="../../image/reduce.png"></image>
+				</view>
+
+			</view>
+		</view>
+		<view wx:if="{{list.length<3 && showFlag}}" class='item'>
+			<view class='item-o'>
+				<view class="item-title">金额：</view>
+				<input class="item-input" value="{{temp.totalAmt}}" bindinput='_setParam' data-key="totalAmt" />
+				<view>元,</view>
+				<view class="item-title">满</view>
+				<input class="item-input" value="{{temp.fullAmtToUse}}" bindinput='_setParam' data-key="fullAmtToUse" />
+				<view>元可用</view>
+			</view>
+			<view class="item-btns">                
+				<view class="btn" bindtap="_save">确定</view>
+			</view>
+			<view class="add-btn" bindtap="_addItem">
+				<image src="../../image/add.png"></image>
+			</view>
+			<view class="reduce-btn" bindtap="_delete" data-id="{{deleteId}}">
+				<image src="../../image/reduce.png"></image>
+			</view>
+
+		</view>
+	</block>
+</view>

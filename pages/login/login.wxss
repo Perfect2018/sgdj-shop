@@ -1,0 +1,87 @@
+/* pages/login/login.wxss */
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin: 150rpx 0 50rpx;
+}
+
+.btns {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #fdad00;
+  border-radius: 20rpx;
+  padding: 5rpx 30rpx;
+  color: #fff;
+  width: 200rpx;
+  font-size: 30rpx;
+}
+
+.experience {
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #aaa;
+}
+
+.otherLogin {
+  bottom: 80rpx;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  position: absolute;
+  font-size: 34rpx;
+  color: #fdad00;
+}
+
+.login-title {
+  font-size: 50rpx;
+  font-weight: bold;
+  margin: 50rpx 0;
+  color: #fdad00;
+}
+
+.login-form {
+  width: 90%;
+  margin-top: 200rpx;
+  margin-left: 5%;
+}
+
+.input-item {
+  padding: 30rpx 20rpx;
+  border: 1rpx solid #eee;
+  margin: 40rpx 0;
+}
+
+.login-btn {
+  background: #fdad00;
+  color: #fff;
+  margin-top: 40rpx;
+}
+
+.forget-btn {
+  color: #fdad00;
+  margin-top: 20rpx;
+}

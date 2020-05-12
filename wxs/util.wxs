@@ -1,0 +1,47 @@
+// 获取年月日
+function _getYMD(timestamp) {
+  var date = getDate(timestamp);
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  var hour = date.getHours()
+  var minute = date.getMinutes()
+  var second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+//去除null
+function _isNotNull(str) {
+  return (str+"").replace(getRegExp("null", "img"), '').replace(getRegExp("NaN", "img"), '').replace(getRegExp("undefined", "img"), '');
+}
+// 获取订单中的商品总数
+function _getOrderGoods(order_list) {
+  var count = 0;
+  for (var i = 0; i < order_list.list.length; i++) {
+    count += order_list.list[i].goodsCount
+  }
+  return count;
+}
+// 获取图片URL
+function _getImageUrl(id) {
+  // return 'http://192.168.1.7:18080/outByteImgById?id=' + id
+  return 'http://h5.shuguodj.com/outByteImgById?id=' + id
+
+}
+// 保留两位小数点
+function _getFixedMoney(money) {
+  money = Number(money);
+  return money ? money.toFixed(2) : '0.00';
+}
+module.exports = {
+  _getYMD: _getYMD,
+  _getOrderGoods: _getOrderGoods,
+  _getFixedMoney: _getFixedMoney,
+  _getImageUrl: _getImageUrl,
+  _isNotNull: _isNotNull
+}
