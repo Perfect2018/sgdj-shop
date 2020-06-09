@@ -8,17 +8,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    date:'',
+    startDate:'',
+    endtDate:'',
     shopId:'',
     orderList:''
   },
 
   // 查询订单
   getOrder(){
-    let date = this.data.date
+    let date = this.data.startDate
     let shopId = this.data.shopId
+    let endDate = this.data.endDate
+    if(date === endDate){
+      endDate=''
+    }
     api._post('/shopHeadPage/salesGoods',{
       date,
+      endDate,
       shopId
     }).then(res=>{
       if(res.data.length>0){
@@ -35,17 +41,21 @@ Page({
   },
 
   comfirm(){
+    // console.log(this.data.endDate == this.data.startDate)
     this.getOrder()
   },
 
-  bindDateChange: function(e) {
+  bindStartDateChange: function(e) {
     this.setData({
-      date: e.detail.value
+      startDate: e.detail.value
     })
-    // console.log(this.data.date)
   },
 
-
+  bindEndDateChange: function(e) {
+    this.setData({
+      endDate: e.detail.value
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -54,12 +64,11 @@ Page({
     var time = util.formatDate(new Date())
     this.setData({
       shopId:app.globalData.shopInfo.id,
-      date:time
+      endDate:time,
+      startDate:time
     },()=>{
       this.getOrder()
     })
-    // console.log(this.data.shopId)
-    // console.log(this.data.date)
   },
 
   /**

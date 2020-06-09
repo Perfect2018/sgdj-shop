@@ -10,7 +10,7 @@ Page({
   data: {
     isShow: app.globalData.isShow,
     logo: "../../image/sgdj.jpg",
-    motto: '欢迎使用蔬果到家商户后台！',
+    motto: '欢迎使用蔬果到家商户后台',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: '',
@@ -125,7 +125,8 @@ Page({
       iv: iv
     }).then(res => {
       if (res.data) {
-        if (res.data.isShop || res.data.isShop === "01") {
+        // console.log(res.data)
+        if (res.data.isShop === "00" || res.data.isShop === "01") {
           api.setCustID(res.data['CUST-ID']);
           wx.switchTab({
             url: '../index/index'

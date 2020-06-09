@@ -117,3 +117,10 @@
   border-radius: 20rpx;
   margin-top: 40rpx;
 }
+
+.picker image{
+  width: 16rpx;
+  height: 10rpx;
+  position: relative;
+  top: -4rpx;
+}

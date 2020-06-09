@@ -406,6 +406,7 @@ Page({
   //获取运费
   _goods_freight(e) {
     let value = e.detail.value;
+    console.log(value)
     this.setData({
       ['form.goods_freight']: value
     })

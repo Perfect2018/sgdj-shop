@@ -29,9 +29,10 @@ page{
   flex-wrap: nowrap;
   height: 50rpx;
   line-height: 50rpx;
-  margin-bottom: 20rpx;
+  margin: 20rpx 0;
   padding: 0 20rpx;
   font-size: 30rpx;
+  color: #aaa;
   box-sizing: border-box;
 }
 
@@ -55,9 +56,18 @@ page{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: #aaa;
+  font-size: 28rpx;
 }
 
 .count{
   width: 150rpx;
   text-align: center;
+  color: #aaa;
+  font-size: 28rpx;
+}
+
+.picker{
+  font-size: 30rpx;
+  color: #aaa;
 }

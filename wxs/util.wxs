@@ -29,7 +29,7 @@ function _getOrderGoods(order_list) {
 }
 // 获取图片URL
 function _getImageUrl(id) {
-  // return 'http://192.168.1.7:18080/outByteImgById?id=' + id
+  // return 'http://192.168.1.5:18080/outByteImgById?id=' + id
   return 'http://h5.shuguodj.com/outByteImgById?id=' + id
 
 }

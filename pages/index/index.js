@@ -83,6 +83,7 @@ Page({
 
     if (this.data.disableShop) {
       let state = e.currentTarget.dataset.state;
+      // console.log(state)
       api._get('/myShop/updateShopState', {
         shopState: state,
       }).then(res => {

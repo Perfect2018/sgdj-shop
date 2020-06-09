@@ -270,7 +270,7 @@ Page({
       id: id
     }).then(res => {
       // 获取订单
-      console.log(res)
+      // console.log(res)
       let temp = this.data.orderList.concat([]);
       temp.splice(index, 1);
       this.setData({
@@ -352,8 +352,9 @@ Page({
       pageNum: this.data.pageNum
     }).then(res => {
       let temp = this.data.orderList;
+      // console.log(res.data)
       if (res.data) {
-        console.log(res.data)
+        // console.log(res.data)
         let tempList = res.data.list.map(elem => {
           elem.checked = false;
           return elem;
@@ -386,9 +387,15 @@ Page({
     });
     // 获取订单
     this.getStateOrder(this.data.state, orderState);
-
     // console.log(this.data.currentIndex)
     // console.log(this.data.state)
+  },
+
+  // 待提货
+  goMption(){
+    wx.navigateTo({
+      url: '../orderRedemption/orderRedemption',
+    })
   },
 
   /**

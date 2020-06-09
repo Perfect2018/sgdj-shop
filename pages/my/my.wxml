@@ -33,12 +33,17 @@
     <view class="content-item" bindtap="_toView" data-navigate="fullReductionSetting" data-name="营销活动">营销活动</view>
     <view class="content-item" bindtap="_toView">物料申请</view>
     <view class="content-item" bindtap="_toView">系统消息</view>
-    <view class="content-item" bindtap="_callCusPhone">联系客服
+    <view class="content-item" bindtap="_callCusPhone">市场经理
       <text class="color-aaa fs-24">(点击拨号)</text>
     </view>
     <view class="content-item" bindtap="_toView">订单设置</view>
     <view class="content-item">当前版本：1.0</view>
+    <view class="contact-item">
+    <button open-type="contact">联系客服<text class="color-aaa fs-24">(点击与客服会话)</text></button>
+      <!-- <contact-button  type="default-dark" size="20" session-from="weapp">联系客服<text class="color-aaa fs-24">(点击与客服会话)</text></contact-button> -->
+    </view>
   </view>
+   
   <button class='btn' bindtap="_reLaunch">切换账号</button>
 
 </view>

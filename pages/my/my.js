@@ -14,7 +14,7 @@ Page({
   _toView(e) {
     let navigatePath = e.currentTarget.dataset.navigate;
     let name = e.currentTarget.dataset.name;
-    console.log(name)
+    // console.log(name)
     if (navigatePath) {
       wx.navigateTo({
         url: `../${navigatePath}/${navigatePath}?name=${name}`

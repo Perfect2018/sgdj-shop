@@ -87,7 +87,7 @@
 					</view>
 					<view wx:if="{{state==='02' && currentIndex===1}}" class="btns">
 						<view class="btn btn-p" data-index="{{index}}" bindtap="_printOrder">打印订单</view>
-						<view wx:if="{{item.distributionType=='02'}}" class="btn btn-l">待提货</view>
+						<view wx:if="{{item.distributionType=='02'}}" class="btn btn-l" bindtap="goMption">待提货</view>
 						<view class="btn btn-l" data-orderId="{{item.id}}" data-index="{{index}}" data-orderId="{{item.id}}" bindtap="_confirmDelivery" wx:else>确认配送</view>
 					</view>
           <view wx:if="{{state==='02' && currentIndex===4}}" class="btns">

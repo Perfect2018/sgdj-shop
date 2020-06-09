@@ -1,14 +1,24 @@
 <!--pages/orderStatistics/orderStatistics.wxml-->
 <view class="select-date">
 	<view class="section">
-		<picker mode="date" value="{{date}}" start="2015-01-01" end="2099-01-01" bindchange="bindDateChange">
+		<picker mode="date" value="{{date}}" start="2015-01-01" end="2099-01-01" bindchange="bindStartDateChange">
 			<view class="picker">
-				请选择时间: {{date}}
+				请选择开始时间: <text>{{startDate}}</text>
+			</view>
+		</picker>
+	</view>
+</view>
+<view class="select-date">
+	<view class="section">
+		<picker mode="date" value="{{date}}" start="2015-01-01" end="2099-01-01" bindchange="bindEndDateChange">
+			<view class="picker">
+				请选择结束时间: <text>{{endDate}}</text>
 			</view>
 		</picker>
 	</view>
 	<view bindtap="comfirm" class="comfirm-btn">确定</view>
 </view>
+
 <view class="title">
   <view>商品名称</view>
   <view class="title-count">销售数量</view>

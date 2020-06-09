@@ -19,7 +19,9 @@
 
 		<view class="item-title item-tit">单位</view>
 		<picker class="item-input" mode="selector" bindchange="_goods_specificationsChange" value="{{goods_specificationsIndex}}" range="{{goods_specificationsArray}}">
-			<view class="picker">{{form.goods_specifications?form.goods_specifications:'请选择规格单位'}}</view>
+			<view class="picker">{{form.goods_specifications?form.goods_specifications:'规格单位'}}
+        <image src="../../image/d.png"></image>
+      </view>
 		</picker>
 	</view>
 
@@ -64,7 +66,7 @@
 			<view class="item-title">商品文案</view>
 			<textarea class="item-input-describe" value="{{form.goods_note}}" type="text" maxlength="200" bindinput='_goods_note' data-key="form.goods_note" placeholder="最多输入8行,每行最多18字" bindblur='_goods_note_blur' />
 			</view>
-    <view class='item'>
+    <view class='item' wx:if="{{form.goods_distribution=='01'}}">
       <view class="item-title">到店体验商品</view>
       <radio-group class="item-input" bindchange='_setParams' data-key="form.goods_isSeason">
         <label>
@@ -175,22 +177,34 @@
       <image wx:if="{{img1Base64}}" class="img-item-o" src="{{util._getImageUrl(img1Base64)}}"></image>
       <view wx:else class="img-item-x" data-baseUrl="img1Base64" bindtap="_getImage">+</view>
     </view>
-    <block wx:if="{{form.goods_discount=='01'}}">
+    <block wx:if="{{form.goods_discount=='01' || form.goods_group=='01'}}">
       <view class="img-item">
-        <text class="img-item-title">(限时抢购)</text>
+        <text class="img-item-title">(商品详情)</text>
         <image wx:if="{{img2Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img2Base64" bindtap="_delImg"></image>
         <image wx:if="{{img2Base64}}" class="img-item-o" src="{{util._getImageUrl(img2Base64)}}"></image>
         <view wx:else class="img-item-x" data-baseUrl="img2Base64" bindtap="_getImage">+</view>
       </view>
-    </block>
-    <block wx:if="{{form.goods_group=='01'}}">
       <view class="img-item">
-        <text class="img-item-title">(社区团购)</text>
+        <text class="img-item-title">(商品详情)</text>
         <image wx:if="{{img3Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img3Base64" bindtap="_delImg"></image>
         <image wx:if="{{img3Base64}}" class="img-item-o" src="{{util._getImageUrl(img3Base64)}}"></image>
         <view wx:else class="img-item-x" data-baseUrl="img3Base64" bindtap="_getImage">+</view>
       </view>
     </block>
+    <!-- <block wx:if="{{form.goods_group=='01'}}">
+      <view class="img-item">
+        <text class="img-item-title">(商品详情)</text>
+        <image wx:if="{{img2Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img2Base64" bindtap="_delImg"></image>
+        <image wx:if="{{img2Base64}}" class="img-item-o" src="{{util._getImageUrl(img2Base64)}}"></image>
+        <view wx:else class="img-item-x" data-baseUrl="img2Base64" bindtap="_getImage">+</view>
+      </view>
+      <view class="img-item">
+        <text class="img-item-title">(商品详情)</text>
+        <image wx:if="{{img3Base64}}" class="img-del" src="{{deleteImg}}" data-baseurl="img3Base64" bindtap="_delImg"></image>
+        <image wx:if="{{img3Base64}}" class="img-item-o" src="{{util._getImageUrl(img3Base64)}}"></image>
+        <view wx:else class="img-item-x" data-baseUrl="img3Base64" bindtap="_getImage">+</view>
+      </view>
+    </block> -->
     <block wx:if="{{goodsType=='false'}}">
       <view class="img-item">
         <text class="img-item-title">(商品详情图)</text>

@@ -17,9 +17,6 @@ Page({
     img4Base64: '',
     img5Base64: '',
     img6Base64: '',
-    img7Base64: '',
-    img8Base64: '',
-
     goods_classificationValue: '',
     form: {
       // 名称 
@@ -126,7 +123,7 @@ Page({
     }
 
     if(form.goods_discount=='01' && form.goods_group=='01'){
-      return "请选择限时抢购与社区团购中的一种"
+      return "请选择限时抢购/社区团购中的一种"
     }
 
     if(form.goods_discount == '01'){
@@ -151,14 +148,20 @@ Page({
       }
       if (!form.goods_freight) {
         if (form.goods_isSeason != '01') {
-          return "请输入商品运费";
+        return "请输入商品运费";
         }
-
       }
+      // else if(typeof(form.goods_freight) !== 'number'){
+      //   console.log(typeof(form.goods_freight))
+      //   return "请输入正确的运费金额"
+      // }
       if (!form.goods_deliveryTime) {
         return "请选择发货时间";
-
       }
+      // else if(typeof(form.goods_deliveryTime) !== 'number'){
+      //   console.log(typeof(form.goods_deliveryTime))
+      //   return "请输入正确的时间格式"
+      // }
       if (!this.data.img1Base64) {
         return "请上传商品图";
       }
@@ -197,15 +200,13 @@ Page({
         fightPrice: form.goods_fightPrice,
         goodsTypes: form.goods_discount == '01' ? '01' : form.goods_group == '01' ? '02' : '00',
         maxBuy:form.goods_number,
-        
+
         img1: this.data.img1Base64,
         img2: this.data.img2Base64,
         img3: this.data.img3Base64,
         img4: this.data.img4Base64,
         img5: this.data.img5Base64,
         img6: this.data.img6Base64,
-        // img7: this.data.img7Base64,
-        // img8: this.data.img8Base64,
       }).then(res => {
         wx.hideLoading();
         if (res.success) {
@@ -397,18 +398,61 @@ Page({
       util._toast(msg);
     }
   },
+
+  // _setdiscount(e){
+  //   let key = e.currentTarget.dataset.key
+  //   let value = e.detail.value
+  //   let discount = this.data.form.goods_discount;
+  //   let group = this.data.form.goods_group
+  //   // console.log(e)
+  //   // console.log(value)
+  //   if(value == '02' || group == '01'){
+  //     this.setData({
+  //       [key]:'01',
+  //       group:'02'
+  //     })
+  //     console.log(discount+'---'+group)
+  //   }else{
+  //     this.setData({
+  //       [key]:'02',
+  //       group:'01'
+  //     })
+  //   }
+    
+  //   // console.log(discount)
+    
+  // },
+
+  // _setgroup(e){
+  //   let key = e.currentTarget.dataset.key
+  //   let value = e.detail.value
+  //   this.setData({
+  //     [key]:value
+  //   })
+  // },
+
   // 设置参数
   _setParams(e) {
     let key = e.currentTarget.dataset.key;
     let value = e.detail.value;
-    // let discount = this.data.form.goods_discount;
-    // let group = this.data.form.goods_group
+  //  console.log(e)
     let data = {
       [key]: value
     }
     if (key == "form.goods_fight") {
       data["form.goods_fightPrice"] = "";
     }
+    if(key == "form.goods_discount" && value == "02"){
+       data["img2Base64"] = "",
+       data["img3Base64"] = "",
+       data["form.goods_number"] = ""
+    }
+    if(key == "form.goods_group" && value == "02"){
+      data["img2Base64"] = "",
+      data["img3Base64"] = ""
+    }
+    // console.log(this.data.img2Base64)
+    // console.log(this.data.img3Base64)
     this.setData(data);
     // console.log(key + value)
     // if(this.data.form.goods_discount == '01'){
@@ -424,7 +468,7 @@ Page({
     // }
    
     // console.log(this.data.form.goods_group)
-    console.log(this.data.form.goods_number)
+    // console.log(this.data.form.goods_number)
   },
   //获取名称离开
   _goods_name_blur(e) {

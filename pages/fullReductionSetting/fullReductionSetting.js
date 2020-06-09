@@ -130,12 +130,12 @@ Page({
   // 查询之前满减
   _getData() {
     let flag = this.data.flag;
-    console.log(flag)
+    // console.log(flag)
     if (flag === 0) {
       api._post('/myShop/selectShopCouponList').then(res => {
-        console.log(res)
+        // console.log(res)
         if (res.data && res.data.length) {
-          console.log(res.data)
+          // console.log(res.data)
           this.setData({
             list: res.data,
             temp: {
