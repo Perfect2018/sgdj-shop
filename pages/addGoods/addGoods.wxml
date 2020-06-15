@@ -9,7 +9,10 @@
 	<view class='item'>
 		<view class="item-title item-tit">分类</view>
 		<picker class="item-input" mode="selector" bindchange="_goods_classificationChange" value="{{goods_classificationIndex}}" range="{{goods_classificationArray}}">
-			<view class="picker">{{form.goods_classification?goods_classificationValue:'请选择分类'}}</view>
+			<view class="picker">
+        {{form.goods_classification?goods_classificationValue:'请选择分类'}}
+        <image src="../../image/d.png"></image>
+      </view>
 		</picker>
 	</view>
 

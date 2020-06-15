@@ -8,7 +8,7 @@
 	</view>
 	<view class='goods_type'>
 		<view class="{{flag?' btn':'active btn'}}" bindtap='_setTimely'>即时送</view>
-		<view class="{{flag?'active btn':' btn'}}" bindtap='_setGlobal'>全球臻选</view>
+		<view class="{{flag?'active btn':' btn'}}" bindtap='_setGlobal'>本地生活</view>
 	</view>
 	<view class='order_state'>
 		<block wx:for="{{timely_order}}" wx:key="index">

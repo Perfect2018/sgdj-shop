@@ -98,3 +98,40 @@
   font-size: 30rpx;
   text-align: start;
 }
+
+.point{
+  width: 200rpx;
+  height: 50rpx;
+  border: 1rpx solid #fff;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  color: #fff;
+  position: relative;
+  right: -520rpx;
+  top: -40rpx;
+  text-align: center;
+  line-height: 50rpx;
+}
+
+
+.point view.down{
+  position: absolute;
+  right: 16rpx;
+  top: -35rpx;
+  width: 24rpx;
+  height: 24rpx;
+  
+}
+
+.point view.close{
+  position: absolute;
+  right: 190rpx;
+  top: -22rpx;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.close>image,.down>image{
+  width: 24rpx;
+  height: 24rpx;
+} 

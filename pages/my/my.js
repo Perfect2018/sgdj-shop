@@ -52,7 +52,8 @@ Page({
   data: {
     shop: {},
     myShop: {},
-    shopSourcePhone:''
+    shopSourcePhone:'',
+    isNew:true
   },
   // 获取店铺信息
   _getShop() {
@@ -88,6 +89,13 @@ Page({
         myShop: temp
       })
     });
+  },
+
+  // 关闭提示
+  close(){
+    this.setData({
+      isNew:false
+    })
   },
   /**
    * 生命周期函数--监听页面加载

@@ -1,41 +1,52 @@
 <!--index.wxml-->
 <wxs src="../../wxs/util.wxs" module="util"></wxs>
 <view class="{{shop.shopState==='01'?'':'shop-off'}}">
-  <view class='header'>
-    <view class='shopMsg'>
-      <view class="shop-logo">
-        <image class="img" src='{{util._getImageUrl(shop.shopLogo)}}' />
-        <view class="{{shop.shopState==='01'?'':'state'}}">已打烊</view>
-      </view>
-      <view class="shopName">{{shop.shopName}}</view>
-    </view>
-    <view class='shopState'>
-      <block wx:for="{{shopState}}" wx:key="index">
-        <view class="state_btn {{shop.shopState == item.state ?'select_state':'' }}" data-state="{{item.state}}" bindtap='bindState'>{{item.name}}</view>
-      </block>
-    </view>
-    <text class='orderTitle'>今日数据</text>
-    <view class='order'>
-      <view class='actu_order'>
-        <view>{{todayData.count?todayData.count:'0'}} 单</view>
-        <view>有效订单</view>
-      </view>
-      <view class='order_income'>
-        <view>{{todayData.moneySum?util._getFixedMoney(todayData.moneySum):'0.00'}} 元</view>
-        <view>订单收入</view>
-      </view>
-    </view>
-  </view>
-  <!-- 相关统计 -->
-  <view class='statistics'>
-    <block wx:for="{{statistics}}" wx:key="index">
-      <view class='data_item' bindtap="_toView" data-navigate="{{item.navigateTo}}">
-        <image src='{{item.src}}' class='shopLogo' />
-        <view>
-          <view class='title'>{{item.title}}</view>
-          <view class='messgaae'>{{item.message}}</view>
-        </view>
-      </view>
-    </block>
-  </view>
+	<view class='header'>
+		<view class='shopMsg'>
+			<view class="shop-logo">
+				<image class="img" src='{{util._getImageUrl(shop.shopLogo)}}' />
+				<view class="{{shop.shopState==='01'?'':'state'}}">已打烊</view>
+			</view>
+			<view class="shopName">{{shop.shopName}}</view>
+		</view>
+		<view class='shopState'>
+			<block wx:for="{{shopState}}" wx:key="index">
+				<view class="state_btn {{shop.shopState == item.state ?'select_state':'' }}" data-state="{{item.state}}" bindtap='bindState'>{{item.name}}</view>
+			</block>
+		</view>
+		<text class='orderTitle'>今日数据</text>
+		<view class='order'>
+			<view class='actu_order'>
+				<view>{{todayData.count?todayData.count:'0'}} 单</view>
+				<view>有效订单</view>
+			</view>
+			<view class='order_income'>
+				<view>{{todayData.moneySum?util._getFixedMoney(todayData.moneySum):'0.00'}} 元</view>
+				<view>订单收入</view>
+			</view>
+		</view>
+	</view>
+	<!-- 相关统计 -->
+	<view class='statistics'>
+		<block wx:for="{{statistics}}" wx:key="index">
+			<view class='data_item' bindtap="_toView" data-navigate="{{item.navigateTo}}">
+				<image src='{{item.src}}' class='shopLogo' />
+				<view>
+					<view class='title'>{{item.title}}</view>
+					<view class='messgaae'>{{item.message}}</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</view>
+<view class="point-bottom" wx:if="{{isNew}}">
+	<view class="point">
+		<view bindtap="close">
+			<image src="../../image/close.png" class="close"></image>
+		</view>
+		<text>点此设置店铺信息</text>
+		<view>
+			<image src="../../image/jiantou.png" class="down"></image>
+		</view>
+	</view>
 </view>

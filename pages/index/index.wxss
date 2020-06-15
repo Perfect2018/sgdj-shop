@@ -132,3 +132,47 @@
   font-size: 26rpx;
   line-height: 40rpx;
 }
+
+.point{
+  width: 200rpx;
+  height: 50rpx;
+  border: 1rpx solid #aaa;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  color: #aaa;
+  position: relative;
+  text-align: center;
+  line-height: 50rpx;
+}
+
+.point-bottom{
+  width: 100%;
+  position: fixed;
+  bottom: 20rpx;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  
+}
+
+.point view:first-child{
+  position: absolute;
+  right: -10rpx;
+  top: -22rpx;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.point view:last-child{
+  position: absolute;
+  right: 62rpx;
+  top: 32rpx;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.close,.down{
+  width: 24rpx;
+  height: 24rpx;
+}

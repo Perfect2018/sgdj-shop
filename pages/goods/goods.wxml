@@ -8,7 +8,7 @@
         <view class="tit-sm">(限时送达)</view>
       </view>
       <view class="btn {{goodsType?'':'active'}}" bindtap='_isType' data-state="01">
-        <view class="tit">全球臻选</view>
+        <view class="tit">本地优选</view>
         <view class="tit-sm">(源头直发)</view>
       </view>
     </view>

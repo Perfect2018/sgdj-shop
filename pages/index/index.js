@@ -11,6 +11,7 @@ Page({
       shopState: "01"
     },
     disableShop: true,
+    isNew:true,
     userInfo: {},
     todayData: {},
     shopState: [{
@@ -142,6 +143,12 @@ Page({
 
   },
 
+  // 关闭提示
+  close(){
+    this.setData({
+      isNew:false
+    })
+  },
   onReady: function() {
     /**初始化页面的数据**/
   },
