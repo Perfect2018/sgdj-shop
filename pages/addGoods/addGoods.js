@@ -77,7 +77,8 @@ Page({
     goods_specificationsArray: ['g', 'kg', 'L', 'ml', '份', '件', ],
     goods_commissionIndex: [0],
     goods_commissionArray: ['不设置', '10%', '15%', '20%', '25%', '30%'],
-
+    startDate:'',
+    endDate:'',
   },
   // 数据校验
   _addGoodsValidate(form) {
@@ -132,6 +133,14 @@ Page({
       }
     }
 
+    // if(form.goods_group=='01'){
+    //   if(!this.data.startDate){
+    //     return '请选择预售时间'
+    //   }else if(!this.data.endDate){
+    //     return '请选择提货时间'
+    //   }
+    // }
+
     if (form.goods_prepackaged == '01') {
       if (!form.goods_licenseNumber) {
         return "请输入商品许可证编号";
@@ -171,6 +180,8 @@ Page({
   },
   // 点击添加商品
   _addGoods() {
+    console.log(typeof(this.data.startDate))
+    console.log(this.data.endDate)
     let form = this.data.form;
     let msg = this._addGoodsValidate(form);
     msg = msg ? msg : validate._noteValidate(form.goods_note); //分销验证
@@ -200,7 +211,8 @@ Page({
         fightPrice: form.goods_fightPrice,
         goodsTypes: form.goods_discount == '01' ? '01' : form.goods_group == '01' ? '02' : '00',
         maxBuy:form.goods_number,
-
+        readySaleDate:this.data.startDate,
+        buyGoodsDate:this.data.endDate,
         img1: this.data.img1Base64,
         img2: this.data.img2Base64,
         img3: this.data.img3Base64,
@@ -244,6 +256,19 @@ Page({
         }
       }
     });
+  },
+
+  // 预售时间/提货时间
+  bindStartDateChange: function(e) {
+    this.setData({
+      startDate: e.detail.value
+    })
+  },
+
+  bindEndDateChange: function(e) {
+    this.setData({
+      endDate: e.detail.value
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -487,8 +512,17 @@ Page({
     }
   },
 
+  // point(){
+  //   if(this.data.goods_classificationArray){
+  //     util._toast("存在分类")
+  //   }
+  // },
+
   // 分类选择
   _goods_classificationChange(e) {
+    if(!this.data.goods_classificationArray){
+      util._toast('请到"我的-设置"中设置商品分类')
+    }
     let temp = e.detail.value;
     this.setData({
       ['form.goods_classification']: this.data.goods_classificationArrayMap[temp[0]].id,

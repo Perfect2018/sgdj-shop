@@ -6,6 +6,7 @@
 			<view class="shop-logo">
 				<image class="img" src='{{util._getImageUrl(shop.shopLogo)}}' />
 				<view class="{{shop.shopState==='01'?'':'state'}}">已打烊</view>
+				<view class="shop-type">品牌店</view>
 			</view>
 			<view class="shopName">{{shop.shopName}}</view>
 		</view>
@@ -41,12 +42,12 @@
 </view>
 <view class="point-bottom" wx:if="{{isNew}}">
 	<view class="point">
-		<view bindtap="close">
-			<image src="../../image/close.png" class="close"></image>
+		<view bindtap="close" class="close">
+			×
 		</view>
-		<text>点此设置店铺信息</text>
-		<view>
-			<image src="../../image/jiantou.png" class="down"></image>
+		<text>设置店铺信息</text>
+		<view class="down">
+			▼
 		</view>
 	</view>
 </view>

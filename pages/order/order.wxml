@@ -8,7 +8,7 @@
 	</view>
 	<view class='goods_type'>
 		<view class="{{flag?' btn':'active btn'}}" bindtap='_setTimely'>即时送</view>
-		<view class="{{flag?'active btn':' btn'}}" bindtap='_setGlobal'>本地生活</view>
+		<view class="{{flag?'active btn':' btn'}}" bindtap='_setGlobal'>本地优选</view>
 	</view>
 	<view class='order_state'>
 		<block wx:for="{{timely_order}}" wx:key="index">
@@ -87,7 +87,7 @@
 					</view>
 					<view wx:if="{{state==='02' && currentIndex===1}}" class="btns">
 						<view class="btn btn-p" data-index="{{index}}" bindtap="_printOrder">打印订单</view>
-						<view wx:if="{{item.distributionType=='02'}}" class="btn btn-l" bindtap="goMption">待提货</view>
+						<view wx:if="{{item.distributionType=='02'}}" class="btn btn-l" bindtap="goMption">去核销</view>
 						<view class="btn btn-l" data-orderId="{{item.id}}" data-index="{{index}}" data-orderId="{{item.id}}" bindtap="_confirmDelivery" wx:else>确认配送</view>
 					</view>
           <view wx:if="{{state==='02' && currentIndex===4}}" class="btns">

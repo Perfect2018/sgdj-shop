@@ -124,3 +124,13 @@
   position: relative;
   top: -4rpx;
 }
+
+.select-date{
+  height: 80rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30rpx;
+  padding: 0 20rpx;
+}

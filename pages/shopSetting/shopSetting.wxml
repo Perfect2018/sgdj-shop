@@ -33,7 +33,7 @@
   </view>
 
   <view class='item h-auto flex-between'>
-    <text>分类管理</text>
+    <text>自定义分类</text>
     <view class="tags">
       <block wx:for="{{customClassify}}" wx:key="index">
         <view class="tag" wx:if="{{item}}">

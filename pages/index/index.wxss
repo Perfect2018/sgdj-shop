@@ -35,6 +35,18 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
+.shop-type{
+  position: absolute;
+  width: 100%;
+  height: 35rpx;
+  font-size: 20rpx;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  color: #fdad00;
+  background-color: rgba(255, 255, 255, .7);
+}
+
 .shopMsg .shopName {
   font-size: 36rpx;
   color: #fff;
@@ -134,21 +146,26 @@
 }
 
 .point{
-  width: 200rpx;
+  width: 190rpx;
   height: 50rpx;
-  border: 1rpx solid #aaa;
+  /* border: 1rpx solid #aaa; */
   border-radius: 8rpx;
   font-size: 24rpx;
-  color: #aaa;
+  color: #fff;
   position: relative;
-  text-align: center;
+  /* text-align: center; */
+  left: -26rpx;
+  top: 14rpx;
   line-height: 50rpx;
+  background-color: #1873cf;
+  padding-left: 10rpx;
+  box-sizing: border-box;
 }
 
 .point-bottom{
   width: 100%;
   position: fixed;
-  bottom: 20rpx;
+  bottom: 32rpx;
   display: flex;
   justify-content: flex-end;
   padding: 0 20rpx;
@@ -156,23 +173,18 @@
   
 }
 
-.point view:first-child{
+.point view.close{
   position: absolute;
-  right: -10rpx;
-  top: -22rpx;
-  width: 24rpx;
-  height: 24rpx;
+  right: 0rpx;
+  top: -8rpx;
+  color: #fff;
+  font-size: 40rpx;
 }
 
-.point view:last-child{
+.point view.down{
   position: absolute;
-  right: 62rpx;
-  top: 32rpx;
-  width: 24rpx;
-  height: 24rpx;
-}
-
-.close,.down{
-  width: 24rpx;
-  height: 24rpx;
+  right: 30rpx;
+  top: 29rpx;
+  color: #1873cf;
+  font-size: 28rpx;
 }

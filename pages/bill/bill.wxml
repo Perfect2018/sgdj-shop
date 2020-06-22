@@ -1,0 +1,29 @@
+<!--pages/bill/bill.wxml-->
+<view>
+  <view class="tabs">
+    <view>订单号</view>
+    <view>订单额</view>
+    <view>配送费</view>
+    <view>佣金</view>
+    <view>收入</view>
+    <view>其他</view>
+  </view>
+  <view wx:for="{{list}}" wx:key="index" class="detail">
+    <view>{{item.orderNo?item.orderNo:''}}</view>
+    <block wx:if="{{item.remarks}}">
+      <view class="expend">{{item.orderRealAmt?item.orderRealAmt:''}}</view>
+    </block>
+    <block wx:else>
+      <view class="order">+{{item.orderRealAmt?item.orderRealAmt:''}}</view>
+    </block>
+    <view class="expend">-{{item.distributionAmt?item.distributionAmt:""}}</view>
+    <view class="expend">-{{item.platformAmt?item.platformAmt:''}}</view>
+    <block wx:if="{{item.remarks}}">
+      <view class="expend">-</view>
+    </block>
+    <block wx:else>
+      <view class="income">+{{item.shopFinalMat?item.shopFinalMat:''}}</view>
+    </block>
+    <view>{{item.remarks?item.remarks:''}}</view>
+  </view>
+</view>

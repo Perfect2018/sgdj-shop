@@ -9,12 +9,14 @@
 		<image class='setting' bindtap='setting' src="../../image/setting_img.png"></image>
 		<view class="point" wx:if="{{isNew}}">
       <view class="down">
-				<image src="../../image/jiantou.png"></image>
+				<!-- <image src="../../image/jiantou.png"></image> -->
+				▲
 			</view>
 			<view bindtap="close" class="close">
-				<image src="../../image/close.png"></image>
+			×
+				<!-- <image src="../../image/close.png"></image> -->
 			</view>
-			<text>点此设置店铺信息</text>
+			<text>设置店铺信息</text>
 			
 		</view>
 		<view class='shopName'>{{shop.shopName}}</view>
@@ -39,7 +41,7 @@
 	</view>
 	<view class='content'>
 		<view class="content-item" bindtap="_toView" data-navigate="orderRedemption">订单核销</view>
-		<view class="content-item" bindtap="_toView">我的账单</view>
+		<view class="content-item" bindtap="_toView" data-navigate="bill">我的账单</view>
 		<view class="content-item" bindtap="_toView" data-navigate="fullReductionSetting" data-name="营销活动">营销活动</view>
 		<view class="content-item" bindtap="_toView">物料申请</view>
 		<view class="content-item" bindtap="_toView">系统消息</view>

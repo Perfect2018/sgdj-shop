@@ -100,38 +100,47 @@
 }
 
 .point{
-  width: 200rpx;
+  width: 190rpx;
   height: 50rpx;
-  border: 1rpx solid #fff;
+  /* border: 1rpx solid #fff; */
   border-radius: 8rpx;
   font-size: 24rpx;
   color: #fff;
   position: relative;
-  right: -520rpx;
-  top: -40rpx;
+  right: -532rpx;
+  top: -46rpx;
   text-align: center;
   line-height: 50rpx;
+  background-color: #1873cf;
 }
 
+.point text{
+  position: relative;
+  left: -10rpx;
+}
 
 .point view.down{
   position: absolute;
   right: 16rpx;
-  top: -35rpx;
-  width: 24rpx;
-  height: 24rpx;
-  
+  top: -30rpx;
+  /* width: 20rpx;
+  height: 20rpx; */
+  color: #1873cf;
+  font-size: 28rpx;
 }
 
 .point view.close{
   position: absolute;
-  right: 190rpx;
-  top: -22rpx;
-  width: 24rpx;
-  height: 24rpx;
+  right:0rpx;
+  top: -10rpx;
+  /* width: 20rpx;
+  height: 20rpx; */
+  color: #fff;
+  font-size: 40rpx;
 }
 
-.close>image,.down>image{
-  width: 24rpx;
-  height: 24rpx;
-} 
+/* .close>image,.down>image{
+  width: 20rpx;
+  height: 20rpx;
+  color: #fff;
+}  */

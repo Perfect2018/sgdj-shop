@@ -3,13 +3,15 @@
 <view>
   <view class='header'>
     <view class="goods_type">
+      <view>
       <view class="btn {{goodsType?'active':''}}" bindtap='_isType' data-state="02">
         <view class="tit">即时送</view>
-        <view class="tit-sm">(限时送达)</view>
+        <view class="tit-sm">外卖/限价抢购/社区团购</view>
       </view>
       <view class="btn {{goodsType?'':'active'}}" bindtap='_isType' data-state="01">
         <view class="tit">本地优选</view>
-        <view class="tit-sm">(源头直发)</view>
+        <view class="tit-sm">一件发货/拼单/三级分销</view>
+      </view>
       </view>
     </view>
     <view class='goodsCount'>

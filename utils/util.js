@@ -33,7 +33,7 @@ const _toast = msg => {
     title: msg,
     icon: 'none',
     mask: true,
-    duration: 800
+    duration: 1500
   });
 }
 const _loading = msg => {

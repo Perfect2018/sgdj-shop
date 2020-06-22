@@ -22,7 +22,8 @@
     "pages/addGoods/addGoods",
     "pages/editGoods/editGoods",
     "pages/purchaseHi/purchaseHi",
-    "pages/orderStatistics/orderStatistics"
+    "pages/orderStatistics/orderStatistics",
+    "pages/bill/bill"
   ],
   "window": {
     "backgroundTextStyle": "light",
