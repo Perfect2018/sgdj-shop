@@ -1,0 +1,42 @@
+<wxs src="../../wxs/util.wxs" module="util"></wxs>
+<view class="pickup">
+  <!-- 添加提货点 -->
+  <view class="add-pickup">
+    <view class="card">
+      <label>提货点名称:</label>
+      <input placeholder="请输入提货点名称" placeholder-class="place" bindinput="getParams" data-key="pickup" value="{{pickup}}"></input>
+    </view>
+    <view class="card">
+      <label>联系电话:</label>
+      <input placeholder="输入提货点联系电话" placeholder-class="place" bindinput="getParams" data-key="phone" type="number" value="{{phone}}"></input>
+    </view>
+    <view class="card">
+      <label>地理位置:</label>
+      <input placeholder="提货点具体位置" placeholder-class="place" bindinput="_setSearchList" value="{{addReceiver.address}}"></input>
+    </view>
+    <view wx:if="{{searchResult.length}}" class="search-address">
+      <block wx:for="{{searchResult}}" wx:key="index">
+        <view class="search-address-item" bindtap="_pitchOnAddress" data-uid="{{item.uid}}">{{item.name}}
+          <text class="color-888 fs-24">{{item.city}}-{{item.district}}</text>
+        </view>
+      </block>
+    </view>
+    <view class="card">
+      <label>详细地址:</label>
+      <input placeholder="输入详细地址" placeholder-class="place" bindinput="getParams"  data-key="addr" value="{{addr}}"></input>
+    </view>
+    <view class="btns">
+      <view bindtap="cancel">取消</view>
+      <view bindtap="confirm">确定</view>
+    </view>
+  </view>
+  <!-- 提货点列表 -->
+  <text class="title">取货点列表</text>
+  <view class="list" wx:for="{{list}}" wx:key="index">
+    <view>取货点名称：{{item.groupName}}</view>
+    <view>联系电话：{{item.groupTel}}</view>
+    <view>地址：{{item.groupAddress}}</view>
+    <view>详细地址：{{item.address}}</view>
+    <view bindtap="delete" class="delete" data-index="{{index}}" data-id="{{item.id}}">删除</view>
+  </view>
+</view>

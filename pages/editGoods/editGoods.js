@@ -429,7 +429,7 @@ Page({
 
   // 规格(单位)
   _goods_specificationsChange(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    // console.log('picker发送选择改变，携带值为', e.detail.value)
     let temp = e.detail.value;
     this.setData({
       ['form.goods_specifications']: this.data.goods_specificationsArray[temp[0]],

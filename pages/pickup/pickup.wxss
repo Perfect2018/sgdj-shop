@@ -1,0 +1,138 @@
+/* pages/pickup/pickup.wxss */
+page{
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.pickup{
+  height: 100%;
+ 
+  padding: 5rpx 10rpx;
+}
+
+.add-pickup{
+  width: 100%;
+  height: 535rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.card{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 40rpx 0rpx;
+  box-sizing: border-box;
+}
+
+.card label{
+  width: 180rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 32rpx;
+  color: black;
+  font-weight: 700;
+}
+
+.card input{
+  width: 450rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  color: #ccc;
+  border: 1rpx solid #ccc;
+  border-radius: 6rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+
+.place{
+  font-size: 28rpx;
+  color: #ccc;
+  letter-spacing: 2rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+
+.btns{
+  display: flex;
+  justify-content: space-around;
+  padding: 0 50rpx;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+}
+
+.btns view{
+  width: 120rpx;
+  height: 50rpx;
+  background-color: #FDAD00;
+  text-align: center;
+  line-height: 50rpx;
+  border-radius: 8rpx;
+  color: #000;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.title{
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 32rpx;
+  color: black;
+  font-weight: 700;
+  margin-left: 2rpx;
+  box-sizing: border-box;
+}
+
+.list{
+  width: 100%;
+  border-radius: 10rpx;
+  background-color: #fff;
+  padding: 20rpx;
+  margin-bottom: 10rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  /* font-weight: 600; */
+  position: relative;
+}
+
+.list view{
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.delete{
+  width: 90rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #FDAD00;
+  font-size: 25rpx;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 8rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 14rpx;
+}
+
+.search-address {
+  position: absolute;
+  margin-top: -25rpx;
+  z-index: 999;
+  background-color: #fff;
+  width: 60%;
+  padding: 0 20rpx;
+  left: 190rpx;
+  height: 600rpx;
+  overflow-x: scroll;
+}
+
+.search-address-item {
+  font-size: 28rpx;
+  padding: 30rpx 0 0;
+  border-bottom: 1rpx solid #eee;
+}

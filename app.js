@@ -10,7 +10,8 @@ App({
     lat: '',
     lng: '',
     shopInfo: '',
-    custId: ''
+    custId: '',
+    ak: 'P7lMBcqLx3aYzjSBxGcCqlW0kR6nsa6o',
   },
   realTimeData: {
     isShow: true,

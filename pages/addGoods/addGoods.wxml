@@ -165,14 +165,14 @@
     </view>
   </block>
   <block wx:if="{{form.goods_group=='01'}}">
-    <view class="item">
+    <!-- <view class="item">
       <view class="item-title item-tit">预售时间: </view>
       <picker mode="date" value="{{date}}" start="2015-01-01" end="2099-01-01" bindchange="bindStartDateChange" class="item-input">
         <view class="picker">
           <text>{{startDate?startDate:'请选择预售时间'}}</text>
         </view>
       </picker>
-    </view>
+    </view> -->
     <view class="item">
       <view class="item-title item-tit">提货时间: </view>
         <picker mode="date" value="{{date}}" start="2015-01-01" end="2099-01-01" bindchange="bindEndDateChange" class="item-input">

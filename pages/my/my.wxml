@@ -43,6 +43,7 @@
 		<view class="content-item" bindtap="_toView" data-navigate="orderRedemption">订单核销</view>
 		<view class="content-item" bindtap="_toView" data-navigate="bill">我的账单</view>
 		<view class="content-item" bindtap="_toView" data-navigate="fullReductionSetting" data-name="营销活动">营销活动</view>
+		<view class="content-item" bindtap="_toView" data-navigate="pickup">新增提货点</view>
 		<view class="content-item" bindtap="_toView">物料申请</view>
 		<view class="content-item" bindtap="_toView">系统消息</view>
 		<view class="content-item" bindtap="_callCusPhone">市场经理

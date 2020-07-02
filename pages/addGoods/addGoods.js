@@ -133,13 +133,11 @@ Page({
       }
     }
 
-    // if(form.goods_group=='01'){
-    //   if(!this.data.startDate){
-    //     return '请选择预售时间'
-    //   }else if(!this.data.endDate){
-    //     return '请选择提货时间'
-    //   }
-    // }
+    if(form.goods_group=='01'){
+      if(!this.data.endDate){
+        return '请选择提货时间'
+      }
+    }
 
     if (form.goods_prepackaged == '01') {
       if (!form.goods_licenseNumber) {
@@ -180,8 +178,8 @@ Page({
   },
   // 点击添加商品
   _addGoods() {
-    console.log(typeof(this.data.startDate))
-    console.log(this.data.endDate)
+    // console.log(typeof(this.data.startDate))
+    // console.log(this.data.endDate)
     let form = this.data.form;
     let msg = this._addGoodsValidate(form);
     msg = msg ? msg : validate._noteValidate(form.goods_note); //分销验证
@@ -211,7 +209,7 @@ Page({
         fightPrice: form.goods_fightPrice,
         goodsTypes: form.goods_discount == '01' ? '01' : form.goods_group == '01' ? '02' : '00',
         maxBuy:form.goods_number,
-        readySaleDate:this.data.startDate,
+        // readySaleDate:this.data.startDate,
         buyGoodsDate:this.data.endDate,
         img1: this.data.img1Base64,
         img2: this.data.img2Base64,
@@ -220,6 +218,7 @@ Page({
         img5: this.data.img5Base64,
         img6: this.data.img6Base64,
       }).then(res => {
+        // console.log(res)
         wx.hideLoading();
         if (res.success) {
           wx.setStorageSync("addMsg", true);
@@ -259,11 +258,11 @@ Page({
   },
 
   // 预售时间/提货时间
-  bindStartDateChange: function(e) {
-    this.setData({
-      startDate: e.detail.value
-    })
-  },
+  // bindStartDateChange: function(e) {
+  //   this.setData({
+  //     startDate: e.detail.value
+  //   })
+  // },
 
   bindEndDateChange: function(e) {
     this.setData({
