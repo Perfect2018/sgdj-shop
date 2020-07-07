@@ -68,7 +68,8 @@ Page({
     this.setData({
       pickup:'',
       phone:'',
-      ['addReceiver.address']:''
+      ['addReceiver.address']:'',
+      addr:''
     })
   },
 

@@ -54,7 +54,7 @@
 							<text bindtap="_copyright" data-content="{{item.receiver.receiverName?item.receiver.receiverName:''}}">{{item.receiver.receiverName?item.receiver.receiverName:''}}</text>
 						</view>
 						<view class="line">客户地址：
-							<view bindtap="_copyright" class="line-right" data-content="{{util._isNotNull(item.receiver.receiverProvince+''+item.receiver.receiverCity+''+item.receiver.receiverCounty+''+item.receiver.receiverAddress)}}">{{util._isNotNull(item.receiver.receiverProvince+''+item.receiver.receiverCity+''+item.receiver.receiverCounty+''+item.receiver.receiverAddress)}}</view>
+							<view bindtap="_copyright" class="line-right" data-content="{{util._isNotNull(item.receiver.receiverProvince+''+item.receiver.receiverCity+''+item.receiver.receiverCounty+''+item.receiver.receiverTown+''+item.receiver.receiverAddress)}}">{{util._isNotNull(item.receiver.receiverProvince+''+item.receiver.receiverCity+''+item.receiver.receiverCounty+''+item.receiver.receiverTown+''+item.receiver.receiverAddress)}}</view>
 						</view>
 						<view class="line">联系方式：
 							<text bindtap="_copyright" data-content="{{item.receiver.receiverTel1?item.receiver.receiverTel1:''}}">{{item.receiver.receiverTel1?item.receiver.receiverTel1:''}}</text>
